@@ -10,22 +10,26 @@ namespace COORDINATE_SYSTEM2
     {
         private int x;
         private int y;
-        public Point(int X, int Y)
+
+        public Point(int x, int y)
         {
-            this.x = X;
-            this.y = Y;
+            this.x = x;
+            this.y = y;
         }
+
         public int X 
         { 
             get { return this.x; } 
         }
+
         public int Y
         {
             get { return this.y; }
         }
+
         public override string ToString()
         {
-            return $"{x} {y}";
+            return $"{(x, y)}";
         }
 
     }
