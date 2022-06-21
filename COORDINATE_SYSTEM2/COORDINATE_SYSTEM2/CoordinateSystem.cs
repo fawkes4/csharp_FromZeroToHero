@@ -15,7 +15,6 @@ namespace COORDINATE_SYSTEM2
         public void Add(Point point)
         {
             listOfPoints.Add(point);
-            
         }
 
         public void DisplayAllPoints()
@@ -58,6 +57,11 @@ namespace COORDINATE_SYSTEM2
         public void MinDistance()
         {
             Console.WriteLine($"\nthe MIN distance is {listOfDistsPoints.Min()}");
+        }
+
+        public string PrintAllDistances()
+        {
+            return $"Distance between {listOfPoints[0]} and {listOfPoints[1]} is {FindDistance}";
         }
     }
 }
