@@ -20,7 +20,11 @@ namespace COORDINATE_SYSTEM2
             coordinateSystem.Add(p3);
             coordinateSystem.Add(p4);
             coordinateSystem.Add(p5);
-            
+
+            Console.WriteLine("CHECKING!!!!!!!!!!!!!1111111111");
+            Console.WriteLine(p1.XAxisReflection()); 
+            Console.WriteLine(p1.DistanceTo(p2));
+
             coordinateSystem.DisplayAllPoints();
 
             coordinateSystem.FindDistance();

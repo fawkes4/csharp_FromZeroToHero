@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace COORDINATE_SYSTEM2
 {
-    internal class Point
+    internal class Point:CoordinateSystem
     {
         private int x;
         private int y;
@@ -30,6 +30,26 @@ namespace COORDINATE_SYSTEM2
         public override string ToString()
         {
             return $"{(x, y)}";
+        }
+
+        public double DistanceTo(Point point)
+        {
+            int dX = point.X - X; //distance Between X
+            int dY = point.Y - Y; //distance Between Y
+            double dPoints = Math.Sqrt(dX * dX + dY * dY); //distance Between Points
+            return dPoints;
+        }
+        public Point XAxisReflection() //чоиу я не міг викликати метод 'XAxisReflection(p1)' ?
+        {
+            Point point = new Point(-X, Y);
+            base.Add(point);
+            return point;
+        }
+        public Point YAxisReflection()
+        {
+            Point point = new Point(X, -Y);
+            base.Add(point);
+            return point;
         }
 
     }
