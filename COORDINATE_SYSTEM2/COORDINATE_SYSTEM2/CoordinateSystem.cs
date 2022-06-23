@@ -6,14 +6,21 @@ using System.Threading.Tasks;
 
 namespace COORDINATE_SYSTEM2
 {
-    internal class CoordinateSystem
+    internal class CoordinateSystem //координатна система: містить Ліст, який зберігає всі точки, метод Add, який вносить ці точки в ліст, DisplayAllPoints, який друкує всі наявні точки
     {
-        public List<Point> listOfPoints = new List<Point>(); //List with all Points
+        List<Point> listOfPoints = new List<Point>();
+        List<PointsDistance> pointsDistances = new List<PointsDistance>();
 
-        public List<double> listOfDistsPoints = new List<double>(); //List with all Distances between the points
+        //Point pointClass = new Point();
 
         public void Add(Point point)
         {
+            foreach (Point point1 in listOfPoints)
+            {
+                //Point point2 = point;
+                PointsDistance distance = new PointsDistance(point, point1, point.DistanceTo(point1));
+                pointsDistances.Add(distance);
+            }
             listOfPoints.Add(point);
         }
 
@@ -27,41 +34,64 @@ namespace COORDINATE_SYSTEM2
             }
         }
 
-        public void FindDistance()
+        public PointsDistance MaxDistance()
         {
-            foreach (Point k in listOfPoints) // TODO потрібно створити якусь копію ліста, звідки видаляти член K після того, як він уже був прогнаний в циклі. Аби не дублювати ті самі відстані
-            {                                 //мб замість ліста тут краще використати черги/стаки???
-                foreach (Point l in listOfPoints)
+            PointsDistance pointsDistance2 = null;
+
+            if (pointsDistances.Count == 0)
+            {
+                return null;
+            }
+
+            double max = pointsDistances[0].Distance;
+
+            for (int i = 1; i < pointsDistances.Count; i++)
+            {
+                if (pointsDistances[i].Distance > max)
                 {
-                    if (k == l)
-                    {
-                        Console.WriteLine("There were points with simillar coordinates or just one point");
-                    }
-                    else
-                    {
-                        int dX = l.X - k.X; //distance Between X
-                        int dY = l.Y - k.Y; //distance Between Y
-                        double dPoints = Math.Sqrt(dX * dX + dY * dY); //distance Between Points
-                        listOfDistsPoints.Add(dPoints);
-                        Console.WriteLine($"The distance between point {k} and {l} is : {dPoints}");
-                    }
+                    max = pointsDistances[i].Distance;
+                    pointsDistance2 = pointsDistances[i];
                 }
             }
+
+            return pointsDistance2;
         }
 
-        public void MaxDistance()
+        public PointsDistance MinDistance()
         {
-            Console.WriteLine($"\nthe MAX distance is {listOfDistsPoints.Max()}");
-        }
+            PointsDistance pointsDistance2 = null;
 
-        public void MinDistance()
-        {
-            Console.WriteLine($"\nthe MIN distance is {listOfDistsPoints.Min()}");
-        }
+            if (pointsDistances.Count == 0)
+            {
+                return null;
+            }
 
-        public string PrintAllDistances()
+            double min = pointsDistances[0].Distance;
+
+            for (int i = 1; i < pointsDistances.Count; i++)
+            {
+                if (pointsDistances[i].Distance < min)
+                {
+                    min = pointsDistances[i].Distance;
+                    pointsDistance2 = pointsDistances[i];
+                }
+            }
+
+            return pointsDistance2;
+        }
+        /*
+        public PointsDistance MinDistance()
         {
-            return $"Distance between {listOfPoints[0]} and {listOfPoints[1]} is {FindDistance}";
+            PointsDistance pointsDistance2 = pointsDistances.Min(item => item.Distance);
+            return pointsDistance2;
+        }*/
+
+        public void PrintAllDistances()
+        {
+            for (int i = 0; i < pointsDistances.Count; i++)
+            {
+                Console.WriteLine($"The distance between {pointsDistances[i].Point1} and {pointsDistances[i].Point2} is {pointsDistances[i].Distance}");
+            }
         }
     }
 }

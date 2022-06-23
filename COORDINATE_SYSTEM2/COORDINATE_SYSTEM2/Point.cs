@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace COORDINATE_SYSTEM2
 {
-    internal class Point//:CoordinateSystem
+    internal class Point //об'єкт точка: створює точку, в якій приймає аргументами координати цієї точки. Має метод ToString який пише ці координати, DistanceTo який рахує й повертає відстань між точками, які вказуються, XAxisReflection/YAxisReflection які повертають мені ту ж точку, лиш дзеркально відбиту відносно осі.
     {
         private int x;
         private int y;
+
+        public Point() { }
 
         public Point(int x, int y)
         {
@@ -36,11 +38,13 @@ namespace COORDINATE_SYSTEM2
         {
             int dX = point.X - X; //distance Between X
             int dY = point.Y - Y; //distance Between Y
-            double dPoints = Math.Sqrt(dX * dX + dY * dY); //distance Between Points
-            return dPoints;
+
+            double distanceBetwPoints = Math.Sqrt(dX * dX + dY * dY);
+
+            return distanceBetwPoints;
         }
 
-        public Point XAxisReflection() //чоиу я не міг викликати метод 'XAxisReflection(p1)' ?
+        public Point XAxisReflection()
         {
             Point point = new Point(X, -Y);
             return point;
