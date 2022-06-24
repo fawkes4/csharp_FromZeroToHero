@@ -6,55 +6,54 @@ using System.Threading.Tasks;
 
 namespace COORDINATE_SYSTEM2
 {
-    internal class Point //об'єкт точка: створює точку, в якій приймає аргументами координати цієї точки. Має метод ToString який пише ці координати, DistanceTo який рахує й повертає відстань між точками, які вказуються, XAxisReflection/YAxisReflection які повертають мені ту ж точку, лиш дзеркально відбиту відносно осі.
+    internal class Point
     {
-        private int x;
-        private int y;
+        private int coordinateX;
+        private int coordinateY;
 
-        public Point() { }
-
-        public Point(int x, int y)
+        public Point(int coordinateX, int coordinateY)
         {
-            this.x = x;
-            this.y = y;
+            this.coordinateX = coordinateX;
+            this.coordinateY = coordinateY;
         }
 
-        public int X 
+        public int CoordinateX 
         { 
-            get { return this.x; } 
+            get { return this.coordinateX; } 
         }
 
-        public int Y
+        public int CoordinateY
         {
-            get { return this.y; }
+            get { return this.coordinateY; }
         }
 
         public override string ToString()
         {
-            return $"{(x, y)}";
+            return $"({coordinateX}, {coordinateY})";
         }
 
         public double DistanceTo(Point point)
         {
-            int dX = point.X - X; //distance Between X
-            int dY = point.Y - Y; //distance Between Y
+            int distBetweenX = point.CoordinateX - CoordinateX;
+            int distBetweenY = point.CoordinateY - CoordinateY;
 
-            double distanceBetwPoints = Math.Sqrt(dX * dX + dY * dY);
+            double distanceBetwPoints = Math.Sqrt(distBetweenX * distBetweenX + distBetweenY * distBetweenY);
 
             return distanceBetwPoints;
         }
 
         public Point XAxisReflection()
         {
-            Point point = new Point(X, -Y);
+            Point point = new Point(CoordinateX, -CoordinateY);
+
             return point;
         }
 
         public Point YAxisReflection()
         {
-            Point point = new Point(-X, Y);
+            Point point = new Point(-CoordinateX, CoordinateY);
+
             return point;
         }
-
     }
 }

@@ -22,21 +22,12 @@ namespace COORDINATE_SYSTEM2
             coordinateSystem.Add(p4);
             coordinateSystem.Add(p5);
 
-            Console.WriteLine("CHECKING!!!!!!!!!!!!!1111111111");
             Console.WriteLine(p1.XAxisReflection()); 
             Console.WriteLine(p1.DistanceTo(p2));
-
-            //PointsDistance pointsDistance = new PointsDistance(p1, p2, p1.DistanceTo(p2));
-            //PointsDistance pointsDistance2 = new PointsDistance(p2, p3, p2.DistanceTo(p3));
-
-            //pointsDistance.Add(pointsDistance);
-            //pointsDistance2.Add(pointsDistance2);
 
             coordinateSystem.DisplayAllPoints();
 
             coordinateSystem.PrintAllDistances();
-
-            //coordinateSystem.FindDistance();
 
             coordinateSystem.MaxDistance();
 

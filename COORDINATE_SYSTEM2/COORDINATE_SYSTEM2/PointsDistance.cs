@@ -6,19 +6,17 @@ using System.Threading.Tasks;
 
 namespace COORDINATE_SYSTEM2
 {
-    internal class PointsDistance //клас, в якому я маю конструктор, який збирає докупи інформацію про дві точки і відстань між ними
+    internal class PointsDistance
     {
-        public Point Point1 { get; set; }
-        public Point Point2 { get; set; }
-        public double Distance { get; set; }
+        public Point Point1 { get; }
+        public Point Point2 { get; }
+        public double Distance { get; }
 
-        //public PointsDistance() { }
-
-        public PointsDistance(Point point1, Point point2, double distance)
+        public PointsDistance(Point point1, Point point2)
         {
             this.Point1 = point1;
             this.Point2 = point2;
-            this.Distance = distance;
+            this.Distance = this.Point1.DistanceTo(this.Point2);
         }
     }
 }

@@ -6,37 +6,34 @@ using System.Threading.Tasks;
 
 namespace COORDINATE_SYSTEM2
 {
-    internal class CoordinateSystem //координатна система: містить Ліст, який зберігає всі точки, метод Add, який вносить ці точки в ліст, DisplayAllPoints, який друкує всі наявні точки
+    internal class CoordinateSystem
     {
         List<Point> listOfPoints = new List<Point>();
-        List<PointsDistance> pointsDistances = new List<PointsDistance>();
 
-        //Point pointClass = new Point();
+        List<PointsDistance> pointsDistances = new List<PointsDistance>();
 
         public void Add(Point point)
         {
             foreach (Point point1 in listOfPoints)
             {
-                //Point point2 = point;
-                PointsDistance distance = new PointsDistance(point, point1, point.DistanceTo(point1));
+                PointsDistance distance = new PointsDistance(point, point1);
                 pointsDistances.Add(distance);
             }
+
             listOfPoints.Add(point);
         }
 
         public void DisplayAllPoints()
         {
-            int count = 1;
-
-            foreach (Point i in listOfPoints)
+            for (int i = 0; i < listOfPoints.Count; i++)
             {
-                Console.Write($"point {count++} : {i};\n");
+                Console.WriteLine($"point {i} : {listOfPoints[i]};");
             }
         }
 
         public PointsDistance MaxDistance()
         {
-            PointsDistance pointsDistance2 = null;
+            PointsDistance pointsDistance = null;
 
             if (pointsDistances.Count == 0)
             {
@@ -50,16 +47,16 @@ namespace COORDINATE_SYSTEM2
                 if (pointsDistances[i].Distance > max)
                 {
                     max = pointsDistances[i].Distance;
-                    pointsDistance2 = pointsDistances[i];
+                    pointsDistance = pointsDistances[i];
                 }
             }
 
-            return pointsDistance2;
+            return pointsDistance;
         }
 
         public PointsDistance MinDistance()
         {
-            PointsDistance pointsDistance2 = null;
+            PointsDistance pointsDistance = null;
 
             if (pointsDistances.Count == 0)
             {
@@ -73,11 +70,19 @@ namespace COORDINATE_SYSTEM2
                 if (pointsDistances[i].Distance < min)
                 {
                     min = pointsDistances[i].Distance;
-                    pointsDistance2 = pointsDistances[i];
+                    pointsDistance = pointsDistances[i];
                 }
             }
 
-            return pointsDistance2;
+            return pointsDistance;
+        }
+        
+        public void PrintAllDistances()
+        {
+            foreach (var item in pointsDistances)
+            {
+                Console.WriteLine($"The distance between {item.Point1} and {item.Point2} is {item.Distance}");
+            }
         }
         /*
         public PointsDistance MinDistance()
@@ -85,13 +90,5 @@ namespace COORDINATE_SYSTEM2
             PointsDistance pointsDistance2 = pointsDistances.Min(item => item.Distance);
             return pointsDistance2;
         }*/
-
-        public void PrintAllDistances()
-        {
-            for (int i = 0; i < pointsDistances.Count; i++)
-            {
-                Console.WriteLine($"The distance between {pointsDistances[i].Point1} and {pointsDistances[i].Point2} is {pointsDistances[i].Distance}");
-            }
-        }
     }
 }
