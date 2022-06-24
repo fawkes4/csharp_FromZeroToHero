@@ -29,7 +29,11 @@ namespace COORDINATE_SYSTEM2
 
             coordinateSystem.PrintAllDistances();
 
-            coordinateSystem.MaxDistance();
+            var maxDistance = coordinateSystem.MaxDistance();
+            Console.WriteLine($"the max distance is : {maxDistance}");
+
+            var minDistance = coordinateSystem.MinDistance();
+            Console.WriteLine($"the min distance is : {minDistance}");
 
             coordinateSystem.MinDistance();
         }

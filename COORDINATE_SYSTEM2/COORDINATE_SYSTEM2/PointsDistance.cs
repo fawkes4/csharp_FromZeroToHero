@@ -18,5 +18,10 @@ namespace COORDINATE_SYSTEM2
             this.Point2 = point2;
             this.Distance = this.Point1.DistanceTo(this.Point2);
         }
+
+        public override string ToString()
+        {
+            return $"(The distance between {Point1} and {Point2} is {Distance})";
+        }
     }
 }
