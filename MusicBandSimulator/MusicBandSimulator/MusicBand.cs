@@ -7,24 +7,26 @@ using System.Threading.Tasks;
 namespace MusicBandSimulator
 {
     /// <summary>
-    /// клас Гурту. Містить конструктор Гурту, який приймає його ім'я. Має метод, який йому дозволяє грати. Містить метод для добавляння нових учасників гурту.
+    /// клас Гурту. Містить конструктор Гурту, який приймає його ім'я. 
+    /// Має метод, який йому дозволяє грати. Містить метод для добавляння 
+    /// нових учасників гурту.
     /// </summary>
     internal class MusicBand
     {
-        public string bandName { get; set; }
+        public string BandName { get; set; }
 
         List<BandMember> bandMembers = new List<BandMember>();
 
         public MusicBand(string bandName)
         {
-            this.bandName = bandName;
+            this.BandName = bandName;
         }
 
         public void Perform()
         {
             foreach (var bandMember in bandMembers)
             {
-                bandMember.BandMemberPerform();
+                bandMember.Perform();
             }
         }
 
@@ -46,14 +48,20 @@ namespace MusicBandSimulator
                 //циклу - надаю старому (основному Лісту значення нового ліста).
                 foreach (BandMember member in bandMembers)
                 {
-                    if (member.memberInstrument != newBandMember.memberInstrument)
+                    var instrumentType = member.MemberInstrument.GetType();
+                    var newInstrumentType = newBandMember.MemberInstrument.GetType();
+
+                    if (instrumentType != newInstrumentType) //ToDo GetType
                     {
                         bandMembers2.Add(member);
                     }
                 }
+
                 bandMembers2.Add(newBandMember);
                 bandMembers = bandMembers2;
             }
         }
+
+
     }
 }
