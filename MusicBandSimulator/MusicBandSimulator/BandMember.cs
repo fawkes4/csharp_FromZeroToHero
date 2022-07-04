@@ -7,22 +7,24 @@ using System.Threading.Tasks;
 namespace MusicBandSimulator
 {
     /// <summary>
-    /// Об'єкт - Учасник Гурту. Містить конструктор для створення нового учасника з ім'ям та музичним інструментом. Таком містить метод, який дозволяє учаснику гурту грати на своєму інструменті.
+    /// Об'єкт - Учасник Гурту. Містить конструктор для створення нового учасника з ім'ям та 
+    /// музичним інструментом. Таком містить метод, який дозволяє учаснику гурту 
+    /// грати на своєму інструменті.
     /// </summary>
     internal class BandMember
     {
-        public string nameOfMember { get; set; }
-        public IMusicInstrument memberInstrument { get; set; }
+        public string NameOfMember { get; set; }
+        public IMusicInstrument MemberInstrument { get; set; }
 
         public BandMember(string nameOfMember, IMusicInstrument memberInstrument)
         {
-            this.nameOfMember = nameOfMember;
-            this.memberInstrument = memberInstrument;
+            this.NameOfMember = nameOfMember;
+            this.MemberInstrument = memberInstrument;
         }
 
-        public void BandMemberPerform()
+        public void Perform()
         {
-            Console.WriteLine($"{nameOfMember} is playing on the {memberInstrument}");
+            Console.WriteLine($"{NameOfMember} is playing on the {MemberInstrument.Name} and we hear : {MemberInstrument}");
         }
     }
 }
