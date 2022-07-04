@@ -11,11 +11,12 @@ namespace MusicBandSimulator
             Piano piano = new Piano();
             Violin violin = new Violin();
             MamsNerves nerves = new MamsNerves();
+            Violin mozartViolin = new Violin();
 
-            BandMember newBandMember = new BandMember("volodymyr", piano);
-            BandMember newBandMember2 = new BandMember("yulia", violin);
-            BandMember newBandMember3 = new BandMember("vasylDown", nerves);
-            BandMember newBandMember4 = new BandMember("ostapDown", violin);
+            BandMember newBandMember = new BandMember("Volodymyr", piano);
+            BandMember newBandMember2 = new BandMember("Ostap", mozartViolin);
+            BandMember newBandMember3 = new BandMember("VasylDown", nerves);
+            BandMember newBandMember4 = new BandMember("Yulia", violin);
 
             band.Add(newBandMember);
             band.Add(newBandMember2);
@@ -35,6 +36,21 @@ namespace MusicBandSimulator
             //• Each music instrument should have an ability to Sound
             //     tip: just print on Console something
 
+            //example of GetType()
+
+            //var kek = "kkk".GetType();
+            //var lol = "kkk";
+            //if (kek == typeof(string))
+            //{
+            //    Console.WriteLine("sdfdasfsda");
+            //}
+
+            //if (lol is string)
+            //{
+            //    Console.WriteLine("1112");
+            //}
+
+            //Console.WriteLine(kek);
         }
 
     }

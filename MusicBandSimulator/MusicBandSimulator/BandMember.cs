@@ -24,7 +24,7 @@ namespace MusicBandSimulator
 
         public void Perform()
         {
-            Console.WriteLine($"{NameOfMember} is playing on the {MemberInstrument.Name} and we hear : {MemberInstrument}");
+            Console.WriteLine($"{NameOfMember} is playing on the {MemberInstrument.Name} and we hear : {MemberInstrument.Sound()}");
         }
     }
 }

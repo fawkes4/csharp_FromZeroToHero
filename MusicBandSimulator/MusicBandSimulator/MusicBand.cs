@@ -15,11 +15,12 @@ namespace MusicBandSimulator
     {
         public string BandName { get; set; }
 
-        List<BandMember> bandMembers = new List<BandMember>();
+        public List<BandMember> bandMembers;
 
         public MusicBand(string bandName)
         {
             this.BandName = bandName;
+            bandMembers = new List<BandMember>();
         }
 
         public void Perform()
@@ -39,6 +40,14 @@ namespace MusicBandSimulator
             }
             else
             {
+                //Хочу перевірити, чи вже хтось з учасників гурту грає на типі інструменту,
+                //який я намагаюся добавити. Для цього запускаю цикл for, і змінній "і"
+                //надаю значень індексів в Лісті членів гурту.
+                //Далі оголошую змінні, яким присвоюю значення типу інструменту, на якому
+                //грає новий учасник та порівнюю його з типом інструменту, на якому грає
+                //очередняра з Ліста існуючих виконавців.
+                //В разі співпадіння інструменту - очередняра йде на пенсію, а його місце
+                //займає свіжий талант.
                 for (int i = 0; i < bandMembers.Count; i++)
                 {
                     var newBandMemberType = newBandMember.MemberInstrument.GetType();
