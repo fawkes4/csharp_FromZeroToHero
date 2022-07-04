@@ -7,23 +7,18 @@ using System.Threading.Tasks;
 namespace MusicBandSimulator
 {
     /// <summary>
-    /// Об'єкт - скрипка. Наслідує клас Інструмент.
+    /// Об'єкт - скрипка. Імплементує інтерфейс IMusicInstrument.
     /// </summary>
     internal class Violin : IMusicInstrument
     {
         public string Name { get; set; }
-
-        //public void Sound()
-        //{
-        //    Console.WriteLine($"*{Name} is playing*");
-        //}
 
         public Violin()
         {
             Name = "Violin";
         }
 
-        public override string ToString()
+        public string Sound()
         {
             return $"*{Name} is playing*";
         }

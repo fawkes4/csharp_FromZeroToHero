@@ -9,24 +9,19 @@ namespace MusicBandSimulator
     internal class MamsNerves : IMusicInstrument
     {
         /// <summary>
-        /// Об'єкт - мамині нерви. Наслідує клас Інструмент.
+        /// Об'єкт - мамині нерви. Імплементує інтерфейс IMusicInstrument.
         /// </summary>
-        
-        public string Name { get; set; }
 
-        //public void Sound()
-        //{
-        //    Console.WriteLine($"*{Name} are playing*");
-        //}
+        public string Name { get; set; }
 
         public MamsNerves()
         {
             Name = "MamsNerves";
         }
 
-        public override string ToString()
+        public string Sound()
         {
-            return $"*{Name} are getting worse*";
+            return $"*{Name} are pulled like a string. BRINGGGg-BRINGGGGggg*";
         }
     }
 }

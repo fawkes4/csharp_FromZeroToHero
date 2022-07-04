@@ -7,23 +7,18 @@ using System.Threading.Tasks;
 namespace MusicBandSimulator
 {
     /// <summary>
-    /// Об'єкт - піаніно. Наслідує клас Інструмент.
+    /// Об'єкт - піаніно. Імплементує інтерфейс IMusicInstrument.
     /// </summary>
     internal class Piano : IMusicInstrument
     {
         public string Name { get; set; }
-
-        //public void Sound()
-        //{
-        //    ToString();
-        //}
 
         public Piano()
         {
             Name = "Piano";
         }
 
-        public override string ToString()
+        public string Sound()
         {
             return $"*{Name} is playing*";
         }
