@@ -11,9 +11,8 @@ namespace MusicBandSimulator
     /// </summary>
     internal interface IMusicInstrument
     {
-        public string Name { get; set; }
+        string Name { get; }
 
         string Sound();
-
     }
 }

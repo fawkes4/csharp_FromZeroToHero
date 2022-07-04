@@ -12,7 +12,7 @@ namespace MusicBandSimulator
         /// Об'єкт - мамині нерви. Імплементує інтерфейс IMusicInstrument.
         /// </summary>
 
-        public string Name { get; set; }
+        public string Name { get; }
 
         public MamsNerves()
         {

@@ -11,7 +11,7 @@ namespace MusicBandSimulator
     /// </summary>
     internal class Violin : IMusicInstrument
     {
-        public string Name { get; set; }
+        public string Name { get; }
 
         public Violin()
         {
