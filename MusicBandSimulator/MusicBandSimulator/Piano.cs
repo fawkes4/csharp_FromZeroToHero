@@ -9,12 +9,23 @@ namespace MusicBandSimulator
     /// <summary>
     /// Об'єкт - піаніно. Наслідує клас Інструмент.
     /// </summary>
-    internal class Piano : Instrument
+    internal class Piano : IMusicInstrument
     {
+        public string Name { get; set; }
+
+        //public void Sound()
+        //{
+        //    ToString();
+        //}
+
         public Piano()
         {
-            InstrumentName = "Piano";
-            InstrumentPlays = "*Piano is playing*";
+            Name = "Piano";
+        }
+
+        public override string ToString()
+        {
+            return $"*{Name} is playing*";
         }
     }
 }

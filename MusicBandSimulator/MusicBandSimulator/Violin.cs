@@ -9,12 +9,23 @@ namespace MusicBandSimulator
     /// <summary>
     /// Об'єкт - скрипка. Наслідує клас Інструмент.
     /// </summary>
-    internal class Violin : Instrument
+    internal class Violin : IMusicInstrument
     {
+        public string Name { get; set; }
+
+        //public void Sound()
+        //{
+        //    Console.WriteLine($"*{Name} is playing*");
+        //}
+
         public Violin()
         {
-            InstrumentName = "Violin";
-            InstrumentPlays = "*Violin is playing*";
+            Name = "Violin";
+        }
+
+        public override string ToString()
+        {
+            return $"*{Name} is playing*";
         }
     }
 }

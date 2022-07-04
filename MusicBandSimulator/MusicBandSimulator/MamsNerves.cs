@@ -6,15 +6,27 @@ using System.Threading.Tasks;
 
 namespace MusicBandSimulator
 {
-    internal class MamsNerves : Instrument
+    internal class MamsNerves : IMusicInstrument
     {
         /// <summary>
         /// Об'єкт - мамині нерви. Наслідує клас Інструмент.
         /// </summary>
+        
+        public string Name { get; set; }
+
+        //public void Sound()
+        //{
+        //    Console.WriteLine($"*{Name} are playing*");
+        //}
+
         public MamsNerves()
         {
-            InstrumentName = "MamsNerves";
-            InstrumentPlays = "*MamsNerves can not stand*";
+            Name = "MamsNerves";
+        }
+
+        public override string ToString()
+        {
+            return $"*{Name} are getting worse*";
         }
     }
 }
