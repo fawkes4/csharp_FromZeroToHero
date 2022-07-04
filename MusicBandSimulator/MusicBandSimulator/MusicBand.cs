@@ -39,29 +39,19 @@ namespace MusicBandSimulator
             }
             else
             {
-                List<BandMember> bandMembers2 = new List<BandMember>();
-
-                //цикл що проходиться по колекції з усіма наявними об'єктами, перевіряючи, чи існують
-                //уже музиканти, що грають на інструменті нового музиканта, якого я хочу добавити в гурт.
-                //Добавляю всіх музикантів з унікальним інструментом до новоствореного Ліста. Якщо музикант
-                //з інструментом такий, який вже є в колективі - добавляю його в новий ліст. По завершенні
-                //циклу - надаю старому (основному Лісту значення нового ліста).
-                foreach (BandMember member in bandMembers)
+                for (int i = 0; i < bandMembers.Count; i++)
                 {
-                    var instrumentType = member.MemberInstrument.GetType();
-                    var newInstrumentType = newBandMember.MemberInstrument.GetType();
+                    var newBandMemberType = newBandMember.MemberInstrument.GetType();
+                    var bandMembersType = bandMembers[i].MemberInstrument.GetType();
 
-                    if (instrumentType != newInstrumentType) //ToDo GetType
+                    if (newBandMemberType == bandMembersType)
                     {
-                        bandMembers2.Add(member);
+                        bandMembers.Remove(bandMembers[i]);
                     }
                 }
 
-                bandMembers2.Add(newBandMember);
-                bandMembers = bandMembers2;
+                bandMembers.Add(newBandMember);
             }
         }
-
-
     }
 }
