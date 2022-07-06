@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace COORDINATE_SYSTEM2
 {
-    internal class Triangle
+    internal class Triangle : IFigure 
     {
+
         Point Point1 { get; }
         Point Point2 { get; }
         Point Point3 { get; }

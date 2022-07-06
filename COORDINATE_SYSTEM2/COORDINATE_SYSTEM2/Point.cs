@@ -12,7 +12,7 @@ namespace COORDINATE_SYSTEM2
     /// рахує відстань між двома точками DistanceTo(), 
     /// створює нову точку, що відображається відносно осі.
     /// </summary>
-    internal class Point
+    internal class Point : IFigure
     {
         private int coordinateX;
         private int coordinateY;

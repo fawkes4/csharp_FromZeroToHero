@@ -17,21 +17,46 @@ namespace COORDINATE_SYSTEM2
     /// </summary>
     internal class CoordinateSystem
     {
+        IFigure Figure { get; }
+
         List<Point> listOfPoints = new List<Point>();
+
+        List<IFigure> listOfFigures = new List<IFigure>();
 
         List<PointsDistance> pointsDistances = new List<PointsDistance>();
 
-        public void Add(Point point) //TODO мені потрібно зробити клас/інтерфейс "ФГУРА"
+        List<Rectangle> listOfRectangles = new List<Rectangle>();
+
+        List<Triangle> listOfTriangles = new List<Triangle>();
+
+        public void Add(IFigure figure) //TODO мені потрібно зробити клас/інтерфейс "ФГУРА"
                                      //- який буде базовим для Точки, Прямокутника та Трикутника.
                                      //І в методі Ед приймати їх через цей базовий клас.
         {
-            foreach (Point point1 in listOfPoints)
+            if(figure is Point)
             {
-                PointsDistance distance = new PointsDistance(point, point1);
-                pointsDistances.Add(distance);
-            }
+                foreach (Point point1 in listOfPoints)
+                {
+                    PointsDistance distance = new PointsDistance((Point)figure, point1);
+                    pointsDistances.Add(distance);
+                }
 
-            listOfPoints.Add(point);
+                listOfPoints.Add((Point)figure);
+            }
+            //TODO якщо це чотирикутник.
+            //я повинен пройтися по кожній з його точок почергово і знайти відстані між уже існуючими точками до кожної нової точки.
+            //цикл по точках прямокутника, який братиме першу точку прямокутника і тоді запускатиме з нею цикл по всіх уже існучих точках.
+            if(figure is Rectangle)
+            {
+                foreach (Rectangle rectangle in listOfRectangles)
+                {
+
+                    PointsDistance distance = new PointsDistance((Point)figure, point1);
+                    pointsDistances.Add(distance);
+                }
+
+                listOfPoints.Add((Point)figure);
+            }
         }
 
         public void DisplayAllPoints()

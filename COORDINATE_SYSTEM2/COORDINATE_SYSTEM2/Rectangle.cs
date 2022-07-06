@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace COORDINATE_SYSTEM2
 {
-    internal class Rectangle 
+    internal class Rectangle : IFigure
     {
         public Point Point1 { get; }
         public Point Point2 { get; }
@@ -17,10 +17,16 @@ namespace COORDINATE_SYSTEM2
         {
             Point1 = point1;
             Point2 = point2;
-            Point point3 = new Point(point1.CoordinateX, point2.CoordinateY);
+            CreatePoints();
             Distance1 = point1.DistanceTo(point3);
             Distance2 = point2.DistanceTo(point3);
-            Point point4 = new Point(point2.CoordinateX, point1.CoordinateY);
+            
+        }
+
+        public void CreatePoints()
+        {
+            Point point3 = new Point(Point1.CoordinateX, Point2.CoordinateY);
+            Point point4 = new Point(Point2.CoordinateX, Point1.CoordinateY);
         }
 
         public void Area()
