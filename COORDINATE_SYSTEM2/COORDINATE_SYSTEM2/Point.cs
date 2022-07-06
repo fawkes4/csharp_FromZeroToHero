@@ -6,6 +6,12 @@ using System.Threading.Tasks;
 
 namespace COORDINATE_SYSTEM2
 {
+    /// <summary>
+    /// Клас Point. Цей клас створює точку через конструктор, 
+    /// містить ToString(), 
+    /// рахує відстань між двома точками DistanceTo(), 
+    /// створює нову точку, що відображається відносно осі.
+    /// </summary>
     internal class Point
     {
         private int coordinateX;

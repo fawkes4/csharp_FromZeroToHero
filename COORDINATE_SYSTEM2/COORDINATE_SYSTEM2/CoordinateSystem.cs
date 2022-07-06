@@ -6,13 +6,24 @@ using System.Threading.Tasks;
 
 namespace COORDINATE_SYSTEM2
 {
+    /// <summary>
+    /// Клас Координатна система.
+    /// Містить Ліст всіх створених точок та Ліст всіх знайдених дистанцій.
+    /// Містить Add(), який створює нову точку, добавляє її в Ліст, шукає відстані 
+    /// між існуючими точками до нової точки і добавляє їх в ліст.
+    /// Містить DisplayAllPoints(), який друкує всі точки з ліста.
+    /// Містить MaxDistance() для пошуку максимальної відстані між точками.
+    /// Містить PrintAllDistances(), який друкує всі наявні відстані з Ліста.
+    /// </summary>
     internal class CoordinateSystem
     {
         List<Point> listOfPoints = new List<Point>();
 
         List<PointsDistance> pointsDistances = new List<PointsDistance>();
 
-        public void Add(Point point)
+        public void Add(Point point) //TODO мені потрібно зробити клас/інтерфейс "ФГУРА"
+                                     //- який буде базовим для Точки, Прямокутника та Трикутника.
+                                     //І в методі Ед приймати їх через цей базовий клас.
         {
             foreach (Point point1 in listOfPoints)
             {
@@ -84,11 +95,5 @@ namespace COORDINATE_SYSTEM2
                 Console.WriteLine($"The distance between {item.Point1} and {item.Point2} is {item.Distance}");
             }
         }
-        /*
-        public PointsDistance MinDistance()
-        {
-            PointsDistance pointsDistance2 = pointsDistances.Min(item => item.Distance);
-            return pointsDistance2;
-        }*/
     }
 }
