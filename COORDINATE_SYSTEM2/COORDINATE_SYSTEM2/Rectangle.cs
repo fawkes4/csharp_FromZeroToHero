@@ -13,32 +13,50 @@ namespace COORDINATE_SYSTEM2
         public double Distance1 { get; }
         public double Distance2 { get; }
 
-        public Rectangle(Point point1, Point point2)
+        List<Point> rectanglesPoints = new List<Point>();
+
+        public Rectangle(Point point1, Point point2) //TODO чотирикутник який задаватиметься через дві точки і знаходитиме всі решта точки
         {
             Point1 = point1;
             Point2 = point2;
-            CreatePoints();
+            Point point3 = new Point(Point1.CoordinateX, Point2.CoordinateY);
+            Point point4 = new Point(Point2.CoordinateX, Point1.CoordinateY);
+            rectanglesPoints.Add(point1);
+            rectanglesPoints.Add(point2);
+            rectanglesPoints.Add(point3);
+            rectanglesPoints.Add(point4);
+
             Distance1 = point1.DistanceTo(point3);
             Distance2 = point2.DistanceTo(point3);
             
         }
 
-        public void CreatePoints()
+        public Point CreatePoints()
         {
             Point point3 = new Point(Point1.CoordinateX, Point2.CoordinateY);
-            Point point4 = new Point(Point2.CoordinateX, Point1.CoordinateY);
+
+            return point3;
         }
 
-        public void Area()
+        public double Area()
         {
             double area;
             area = Distance1 * Distance2;
+
+            return area;
         }
 
-        public void Perimeter()
+        public double Perimeter()
         {
             double perimeter;
             perimeter = 2 * Distance1 + 2 * Distance2;
+
+            return perimeter;
+        }
+
+        public override string ToString()
+        {
+            return $"(The Rectangle's points are : {Point1}, {Point2}, {rectanglesPoints[3]}, {rectanglesPoints[4]}.";
         }
     }
 }

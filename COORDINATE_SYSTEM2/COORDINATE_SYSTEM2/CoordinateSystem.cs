@@ -17,21 +17,20 @@ namespace COORDINATE_SYSTEM2
     /// </summary>
     internal class CoordinateSystem
     {
-        IFigure Figure { get; }
-
         List<Point> listOfPoints = new List<Point>();
-
-        List<IFigure> listOfFigures = new List<IFigure>();
-
-        List<PointsDistance> pointsDistances = new List<PointsDistance>();
 
         List<Rectangle> listOfRectangles = new List<Rectangle>();
 
         List<Triangle> listOfTriangles = new List<Triangle>();
 
-        public void Add(IFigure figure) //TODO мені потрібно зробити клас/інтерфейс "ФГУРА"
-                                     //- який буде базовим для Точки, Прямокутника та Трикутника.
-                                     //І в методі Ед приймати їх через цей базовий клас.
+        List<IFigure> listOfFigures = new List<IFigure>();
+
+        List<PointsDistance> pointsDistances = new List<PointsDistance>();
+
+        //TODO мені потрібно зробити КЛАС!!! "ФІГУРА"
+        //- який буде базовим для Точки, Прямокутника та Трикутника.
+        //І в методі Ед приймати їх через цей базовий клас.
+        public void Add(IFigure figure) 
         {
             if(figure is Point)
             {
@@ -46,16 +45,49 @@ namespace COORDINATE_SYSTEM2
             //TODO якщо це чотирикутник.
             //я повинен пройтися по кожній з його точок почергово і знайти відстані між уже існуючими точками до кожної нової точки.
             //цикл по точках прямокутника, який братиме першу точку прямокутника і тоді запускатиме з нею цикл по всіх уже існучих точках.
-            if(figure is Rectangle)
+            else if(figure is Rectangle)
             {
-                foreach (Rectangle rectangle in listOfRectangles)
-                {
+                listOfRectangles.Add((Rectangle)figure);
+            }
+            else if(figure is Triangle)
+            {
+                listOfTriangles.Add((Triangle)figure);
+            }
+        }
 
-                    PointsDistance distance = new PointsDistance((Point)figure, point1);
-                    pointsDistances.Add(distance);
-                }
+        public void PrintAreas(IFigure figure)
+        {
+            if (figure is Point)
+            {
+                Console.WriteLine("N/A");
+            }
+            else if (figure is Rectangle)
+            {
+                Console.WriteLine(figure.ToString());
+                Console.WriteLine($"Area is {figure.Area()}");
+            }
+            else if (figure is Triangle)
+            {
+                Console.WriteLine(figure.ToString());
+                Console.WriteLine($"Area is {figure.Area()}");
+            }
+        }
 
-                listOfPoints.Add((Point)figure);
+        public void PrintPerimeter(IFigure figure)
+        {
+            if (figure is Point)
+            {
+                Console.WriteLine("N/A");
+            }
+            else if (figure is Rectangle)
+            {
+                Console.WriteLine(figure.ToString());
+                Console.WriteLine($"Area is {figure.Perimeter()}");
+            }
+            else if (figure is Triangle)
+            {
+                Console.WriteLine(figure.ToString());
+                Console.WriteLine($"Area is {figure.Perimeter()}");
             }
         }
 
@@ -64,6 +96,14 @@ namespace COORDINATE_SYSTEM2
             for (int i = 0; i < listOfPoints.Count; i++)
             {
                 Console.WriteLine($"point {i} : {listOfPoints[i]};");
+            }
+        }
+
+        public void PrintAllDistances()
+        {
+            foreach (var item in pointsDistances)
+            {
+                Console.WriteLine($"The distance between {item.Point1} and {item.Point2} is {item.Distance}");
             }
         }
 
@@ -111,14 +151,6 @@ namespace COORDINATE_SYSTEM2
             }
 
             return pointsDistance;
-        }
-        
-        public void PrintAllDistances()
-        {
-            foreach (var item in pointsDistances)
-            {
-                Console.WriteLine($"The distance between {item.Point1} and {item.Point2} is {item.Distance}");
-            }
         }
     }
 }

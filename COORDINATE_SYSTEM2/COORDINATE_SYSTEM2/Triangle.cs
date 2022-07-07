@@ -26,7 +26,7 @@ namespace COORDINATE_SYSTEM2
             Distance1 = point3.DistanceTo(point1);
         }
 
-        public void Area()
+        public double Area()
         {
             double area;
             double underRoot;
@@ -36,13 +36,21 @@ namespace COORDINATE_SYSTEM2
             double multiplier3 = halfPerimeter - Distance3;
             underRoot = halfPerimeter * multiplier1 * multiplier2 * multiplier3;
             area = Math.Sqrt(underRoot);
+
+            return area;
         }
 
         public double Perimeter()
         {
             double perimeter;
             perimeter = Distance1 + Distance2 + Distance3;
+
             return perimeter;
+        }
+
+        public override string ToString()
+        {
+            return $"(The Triangle's points are : {Point1}, {Point2}, {Point3})";
         }
     }
 }

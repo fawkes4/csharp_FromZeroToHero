@@ -15,12 +15,18 @@ namespace COORDINATE_SYSTEM2
             Point p3 = new Point(5, 10);
             Point p4 = new Point(1, 1);
             Point p5 = new Point(7, 0);
+            Point p6 = new Point(8, 11);
+            Point p7 = new Point(2, 4);
+
+            Rectangle rectangle1  = new Rectangle(p6, p7);
             
             coordinateSystem.Add(p1); 
             coordinateSystem.Add(p2);
             coordinateSystem.Add(p3);
             coordinateSystem.Add(p4);
             coordinateSystem.Add(p5);
+
+            coordinateSystem.Add(rectangle1);
 
             Console.WriteLine(p1.XAxisReflection()); 
             Console.WriteLine(p1.DistanceTo(p2));
@@ -36,6 +42,8 @@ namespace COORDINATE_SYSTEM2
             Console.WriteLine($"the min distance is : {minDistance}");
 
             coordinateSystem.MinDistance();
+
+            coordinateSystem.PrintAreas(rectangle1);
         }
 
     }

@@ -47,6 +47,17 @@ namespace COORDINATE_SYSTEM2
 
             return distanceBetwPoints;
         }
+        public double Area()
+        {
+            double area = 0.0;
+            return area;
+        }
+
+        public double Perimeter()
+        {
+            double perimeter = 0.0;
+            return perimeter;
+        }
 
         public Point XAxisReflection()
         {
