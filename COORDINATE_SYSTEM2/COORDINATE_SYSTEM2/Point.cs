@@ -59,6 +59,12 @@ namespace COORDINATE_SYSTEM2
             return perimeter;
         }
 
+        public List<Point> GetPoints()
+        {
+            List<Point> points = null;
+            return points;
+        }
+
         public Point XAxisReflection()
         {
             Point point = new Point(CoordinateX, -CoordinateY);

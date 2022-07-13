@@ -11,5 +11,6 @@ namespace COORDINATE_SYSTEM2
     {
         public double Area();
         public double Perimeter();
+        public List<Point> GetPoints();
     }
 }

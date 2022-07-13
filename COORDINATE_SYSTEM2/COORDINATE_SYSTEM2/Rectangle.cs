@@ -19,23 +19,24 @@ namespace COORDINATE_SYSTEM2
         {
             Point1 = point1;
             Point2 = point2;
+
+            GetPoints();
+
+            Distance1 = point1.DistanceTo(rectanglesPoints[2]);
+            Distance2 = point2.DistanceTo(rectanglesPoints[3]);
+        }
+
+        public List<Point> GetPoints()
+        {
             Point point3 = new Point(Point1.CoordinateX, Point2.CoordinateY);
             Point point4 = new Point(Point2.CoordinateX, Point1.CoordinateY);
-            rectanglesPoints.Add(point1);
-            rectanglesPoints.Add(point2);
+
+            rectanglesPoints.Add(Point1);
+            rectanglesPoints.Add(Point2);
             rectanglesPoints.Add(point3);
             rectanglesPoints.Add(point4);
 
-            Distance1 = point1.DistanceTo(point3);
-            Distance2 = point2.DistanceTo(point3);
-            
-        }
-
-        public Point CreatePoints()
-        {
-            Point point3 = new Point(Point1.CoordinateX, Point2.CoordinateY);
-
-            return point3;
+            return rectanglesPoints;
         }
 
         public double Area()
@@ -56,7 +57,7 @@ namespace COORDINATE_SYSTEM2
 
         public override string ToString()
         {
-            return $"(The Rectangle's points are : {Point1}, {Point2}, {rectanglesPoints[3]}, {rectanglesPoints[4]}.";
+            return $"(The Rectangle's points are : {Point1}, {Point2}, {rectanglesPoints[2]}, {rectanglesPoints[3]}.";
         }
     }
 }

@@ -17,12 +17,6 @@ namespace COORDINATE_SYSTEM2
     /// </summary>
     internal class CoordinateSystem
     {
-        List<Point> listOfPoints = new List<Point>();
-
-        List<Rectangle> listOfRectangles = new List<Rectangle>();
-
-        List<Triangle> listOfTriangles = new List<Triangle>();
-
         List<IFigure> listOfFigures = new List<IFigure>();
 
         List<PointsDistance> pointsDistances = new List<PointsDistance>();
@@ -32,70 +26,84 @@ namespace COORDINATE_SYSTEM2
         //І в методі Ед приймати їх через цей базовий клас.
         public void Add(IFigure figure) 
         {
-            if(figure is Point)
+            if(figure.Area() == 0)
             {
-                foreach (Point point1 in listOfPoints)
+                foreach (Point point1 in listOfFigures)
                 {
                     PointsDistance distance = new PointsDistance((Point)figure, point1);
                     pointsDistances.Add(distance);
                 }
 
-                listOfPoints.Add((Point)figure);
+                listOfFigures.Add((Point)figure);
             }
-            //TODO якщо це чотирикутник.
-            //я повинен пройтися по кожній з його точок почергово і знайти відстані між уже існуючими точками до кожної нової точки.
-            //цикл по точках прямокутника, який братиме першу точку прямокутника і тоді запускатиме з нею цикл по всіх уже існучих точках.
-            else if(figure is Rectangle)
+            else if(figure.Area() != 0)
             {
-                listOfRectangles.Add((Rectangle)figure);
-            }
-            else if(figure is Triangle)
-            {
-                listOfTriangles.Add((Triangle)figure);
-            }
-        }
-
-        public void PrintAreas(IFigure figure)
-        {
-            if (figure is Point)
-            {
-                Console.WriteLine("N/A");
-            }
-            else if (figure is Rectangle)
-            {
-                Console.WriteLine(figure.ToString());
-                Console.WriteLine($"Area is {figure.Area()}");
-            }
-            else if (figure is Triangle)
-            {
-                Console.WriteLine(figure.ToString());
-                Console.WriteLine($"Area is {figure.Area()}");
-            }
-        }
-
-        public void PrintPerimeter(IFigure figure)
-        {
-            if (figure is Point)
-            {
-                Console.WriteLine("N/A");
-            }
-            else if (figure is Rectangle)
-            {
-                Console.WriteLine(figure.ToString());
-                Console.WriteLine($"Area is {figure.Perimeter()}");
-            }
-            else if (figure is Triangle)
-            {
-                Console.WriteLine(figure.ToString());
-                Console.WriteLine($"Area is {figure.Perimeter()}");
+                foreach (IFigure figure1 in listOfFigures)
+                {
+                    if(figure1.Area() != 0)
+                    {
+                        foreach (Point point in figure1.GetPoints())
+                        {
+                            foreach (Point point1 in figure.GetPoints())
+                            {
+                                PointsDistance distance = new PointsDistance(point1, point);
+                                pointsDistances.Add(distance);
+                            }
+                        }
+                    }
+                    else if(figure1.Area() == 0)
+                    {
+                        Point point = figure1 as Point;
+                        foreach (Point point1 in figure.GetPoints())
+                        {
+                            PointsDistance distance = new PointsDistance(point1, point);
+                            pointsDistances.Add(distance);
+                        }
+                    }
+                    
+                }
+                listOfFigures.Add(figure);
             }
         }
 
-        public void DisplayAllPoints()
+        public void PrintAreas()
         {
-            for (int i = 0; i < listOfPoints.Count; i++)
+            foreach(IFigure figure in listOfFigures)
             {
-                Console.WriteLine($"point {i} : {listOfPoints[i]};");
+                if (figure.Area() == 0)
+                {
+                    Console.WriteLine("N/A");
+                }
+                else if (figure.Area() != 0)
+                {
+                    Console.WriteLine(figure.ToString());
+                    Console.WriteLine($"Area is {figure.Area()}");
+                }
+            }
+        }
+
+        public void PrintPerimeter()
+        {
+            foreach (IFigure figure in listOfFigures)
+            {
+                if (figure.Area() == 0)
+                {
+                    Console.WriteLine("N/A");
+                }
+                else if (figure.Area() != 0)
+                {
+                    Console.WriteLine(figure.ToString());
+                    Console.WriteLine($"Area is {figure.Perimeter()}");
+                }
+            }
+            
+        }
+
+        public void DisplayAllPoints() // чи буде проблема з методом, коли замінив Ліст?
+        {
+            for (int i = 0; i < listOfFigures.Count; i++)
+            {
+                Console.WriteLine($"point {i} : {listOfFigures[i]};");
             }
         }
 

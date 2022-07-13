@@ -16,6 +16,8 @@ namespace COORDINATE_SYSTEM2
         public double Distance2 { get; }
         public double Distance3 { get; }
 
+        List<Point> trianglePoints = new List<Point>();
+
         public Triangle(Point point1, Point point2, Point point3)
         {
             Point1 = point1;
@@ -23,7 +25,16 @@ namespace COORDINATE_SYSTEM2
             Point3 = point3;
             Distance1 = point1.DistanceTo(point2);
             Distance2 = point2.DistanceTo(point3);
-            Distance1 = point3.DistanceTo(point1);
+            Distance3 = point3.DistanceTo(point1);
+        }
+
+        public List<Point> GetPoints()
+        {
+            trianglePoints.Add(Point1);
+            trianglePoints.Add(Point2);
+            trianglePoints.Add(Point3);
+
+            return trianglePoints;
         }
 
         public double Area()
