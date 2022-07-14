@@ -39,24 +39,25 @@ namespace COORDINATE_SYSTEM2
 
             coordinateSystem.Add(triangle1);
 
-            Console.WriteLine(p1.XAxisReflection()); 
-            Console.WriteLine(p1.DistanceTo(p2));
-
-            Console.WriteLine("SEARCHING!!!!!");
+            Console.WriteLine("List of all points :\n");
             coordinateSystem.DisplayAllPoints();
 
+            Console.WriteLine("\nPRINTING ALL DISTANCES!!! :\n");
             coordinateSystem.PrintAllDistances();
 
+            Console.WriteLine("\nMax distance :\n");
             var maxDistance = coordinateSystem.MaxDistance();
             Console.WriteLine($"the max distance is : {maxDistance}");
 
+            Console.WriteLine("\nMin distance :\n");
             var minDistance = coordinateSystem.MinDistance();
             Console.WriteLine($"the min distance is : {minDistance}");
 
-            coordinateSystem.MinDistance();
-
-            Console.WriteLine("AREASSSS!!!");
+            Console.WriteLine("\nAREAS IN THE SKY :\n");
             coordinateSystem.PrintAreas();
+
+            Console.WriteLine("\nAll Perimeters :\n");
+            coordinateSystem.PrintPerimeter();
         }
 
     }

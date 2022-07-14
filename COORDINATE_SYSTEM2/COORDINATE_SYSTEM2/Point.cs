@@ -35,7 +35,7 @@ namespace COORDINATE_SYSTEM2
 
         public override string ToString()
         {
-            return $"({coordinateX}, {coordinateY})";
+            return $"Point ({coordinateX}, {coordinateY})";
         }
 
         public double DistanceTo(Point point)
@@ -61,9 +61,14 @@ namespace COORDINATE_SYSTEM2
 
         public List<Point> GetPoints()
         {
-            List<Point> points = null;
+            List<Point> points = new List<Point>() { this };
             return points;
         }
+
+        //public List<Point> GetPoints()
+        //{
+        //    return new List<Point>() { this };
+        //}
 
         public Point XAxisReflection()
         {

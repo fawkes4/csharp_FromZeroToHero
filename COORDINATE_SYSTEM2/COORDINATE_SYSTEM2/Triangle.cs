@@ -8,21 +8,17 @@ namespace COORDINATE_SYSTEM2
 {
     internal class Triangle : IFigure 
     {
-
-        Point Point1 { get; }
-        Point Point2 { get; }
-        Point Point3 { get; }
-        public double Distance1 { get; }
-        public double Distance2 { get; }
-        public double Distance3 { get; }
+        double Distance1 { get; }
+        double Distance2 { get; }
+        double Distance3 { get; }
 
         List<Point> trianglePoints = new List<Point>();
 
         public Triangle(Point point1, Point point2, Point point3)
         {
-            Point1 = point1;
-            Point2 = point2;
-            Point3 = point3;
+            trianglePoints.Add(point1);
+            trianglePoints.Add(point2);
+            trianglePoints.Add(point3);
             Distance1 = point1.DistanceTo(point2);
             Distance2 = point2.DistanceTo(point3);
             Distance3 = point3.DistanceTo(point1);
@@ -30,10 +26,6 @@ namespace COORDINATE_SYSTEM2
 
         public List<Point> GetPoints()
         {
-            trianglePoints.Add(Point1);
-            trianglePoints.Add(Point2);
-            trianglePoints.Add(Point3);
-
             return trianglePoints;
         }
 
@@ -53,15 +45,12 @@ namespace COORDINATE_SYSTEM2
 
         public double Perimeter()
         {
-            double perimeter;
-            perimeter = Distance1 + Distance2 + Distance3;
-
-            return perimeter;
+            return Distance1 + Distance2 + Distance3;
         }
 
         public override string ToString()
         {
-            return $"(The Triangle's points are : {Point1}, {Point2}, {Point3})";
+            return $"(The Triangle's points are : {trianglePoints[0]}, {trianglePoints[1]}, {trianglePoints[2]})";
         }
     }
 }

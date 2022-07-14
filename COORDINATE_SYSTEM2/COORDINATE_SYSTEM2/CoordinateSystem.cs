@@ -19,66 +19,21 @@ namespace COORDINATE_SYSTEM2
     {
         List<IFigure> listOfFigures = new List<IFigure>();
 
-        List<PointsDistance> pointsDistances = new List<PointsDistance>();
+        List<PointsDistance> listOfPointsDistances = new List<PointsDistance>();
 
-        //TODO мені потрібно зробити КЛАС!!! "ФІГУРА"
-        //- який буде базовим для Точки, Прямокутника та Трикутника.
-        //І в методі Ед приймати їх через цей базовий клас.
-        public void Add(IFigure figure) 
+        public void Add(IFigure figure)
         {
-            if(figure.Area() == 0)
-            {
-                foreach (Point point1 in listOfFigures)
-                {
-                    PointsDistance distance = new PointsDistance((Point)figure, point1);
-                    pointsDistances.Add(distance);
-                }
-
-                listOfFigures.Add((Point)figure);
-            }
-            else if(figure.Area() != 0)
-            {
-                foreach (IFigure figure1 in listOfFigures)
-                {
-                    if(figure1.Area() != 0)
-                    {
-                        foreach (Point point in figure1.GetPoints())
-                        {
-                            foreach (Point point1 in figure.GetPoints())
-                            {
-                                PointsDistance distance = new PointsDistance(point1, point);
-                                pointsDistances.Add(distance);
-                            }
-                        }
-                    }
-                    else if(figure1.Area() == 0)
-                    {
-                        Point point = figure1 as Point;
-                        foreach (Point point1 in figure.GetPoints())
-                        {
-                            PointsDistance distance = new PointsDistance(point1, point);
-                            pointsDistances.Add(distance);
-                        }
-                    }
-                    
-                }
-                listOfFigures.Add(figure);
-            }
+            listOfFigures.Add(figure);
         }
 
         public void PrintAreas()
         {
-            foreach(IFigure figure in listOfFigures)
+            foreach (IFigure figure in listOfFigures)
             {
-                if (figure.Area() == 0)
-                {
-                    Console.WriteLine("N/A");
-                }
-                else if (figure.Area() != 0)
-                {
-                    Console.WriteLine(figure.ToString());
-                    Console.WriteLine($"Area is {figure.Area()}");
-                }
+                var area = figure.Area();
+                var pishovNahyi = area == 0 ? "N / A" : area.ToString();
+                Console.WriteLine(figure.ToString());
+                Console.WriteLine($"Area is {pishovNahyi}\n");
             }
         }
 
@@ -86,52 +41,88 @@ namespace COORDINATE_SYSTEM2
         {
             foreach (IFigure figure in listOfFigures)
             {
-                if (figure.Area() == 0)
-                {
-                    Console.WriteLine("N/A");
-                }
-                else if (figure.Area() != 0)
-                {
-                    Console.WriteLine(figure.ToString());
-                    Console.WriteLine($"Area is {figure.Perimeter()}");
-                }
+                var perimeter = figure.Perimeter();
+                var pishovNahyi = perimeter == 0 ? "N / A" : perimeter.ToString();
+                Console.WriteLine(figure.ToString());
+                Console.WriteLine($"Perimeter is {pishovNahyi}\n");
             }
-            
         }
 
-        public void DisplayAllPoints() // чи буде проблема з методом, коли замінив Ліст?
+        public void DisplayAllPoints()
         {
-            for (int i = 0; i < listOfFigures.Count; i++)
+            List<Point> listOfPoints = AddAllFiguresPointsIntoList();
+
+            for (int i = 0; i < listOfPoints.Count; i++)
             {
-                Console.WriteLine($"point {i} : {listOfFigures[i]};");
+                Console.WriteLine($"point {i} : {listOfPoints[i]};");
             }
         }
+        
+        public List<Point> AddAllFiguresPointsIntoList()
+        {
+            List<Point> listOfPoints = new List<Point>();
 
+            foreach (IFigure innerFigure in listOfFigures)
+            {
+                foreach (Point point in innerFigure.GetPoints())
+                {
+                    listOfPoints.Add(point);
+                }
+            }
+
+            return listOfPoints;
+        }
+
+        /// <summary>
+        /// метод, що рахує і друкує всі відстані. 
+        /// Створюю два ліста, які набирають значень всіх існуючих точок.
+        /// перший цикл бере кожен елемент з першого ліста.
+        /// другий цикл йде по другому лісті, беручи кожен елемент ОКРІМ першого для пошуку відстані.
+        /// Після знаходження відстані - добавляю цб відстань в ліст відстаней та
+        /// КОЛИ другий ліст дійшов до свого кінця - видаляю перший елемент з ДРУГОГО ліста
+        /// аби уникнути повторень.
+        /// </summary>
         public void PrintAllDistances()
         {
-            foreach (var item in pointsDistances)
+            List<Point> listOfPoints = AddAllFiguresPointsIntoList();
+            List<Point> listOfPoints2 = AddAllFiguresPointsIntoList();
+            
+            foreach(Point point in listOfPoints)
+            {
+                for(int i = 1; i < listOfPoints2.Count; i++)
+                {
+                    int count = i;
+                    Point point1 = listOfPoints2[i];
+                    PointsDistance distance = new PointsDistance(point1, point);
+                    listOfPointsDistances.Add(distance);
+                }
+                listOfPoints2.RemoveAt(0);
+            }
+
+            foreach (var item in listOfPointsDistances)
             {
                 Console.WriteLine($"The distance between {item.Point1} and {item.Point2} is {item.Distance}");
             }
         }
+        
 
         public PointsDistance MaxDistance()
         {
             PointsDistance pointsDistance = null;
 
-            if (pointsDistances.Count == 0)
+            if (listOfPointsDistances.Count == 0)
             {
                 return null;
             }
 
-            double max = pointsDistances[0].Distance;
+            double max = listOfPointsDistances[0].Distance;
 
-            for (int i = 1; i < pointsDistances.Count; i++)
+            for (int i = 1; i < listOfPointsDistances.Count; i++)
             {
-                if (pointsDistances[i].Distance > max)
+                if (listOfPointsDistances[i].Distance > max)
                 {
-                    max = pointsDistances[i].Distance;
-                    pointsDistance = pointsDistances[i];
+                    max = listOfPointsDistances[i].Distance;
+                    pointsDistance = listOfPointsDistances[i];
                 }
             }
 
@@ -142,19 +133,19 @@ namespace COORDINATE_SYSTEM2
         {
             PointsDistance pointsDistance = null;
 
-            if (pointsDistances.Count == 0)
+            if (listOfPointsDistances.Count == 0)
             {
                 return null;
             }
 
-            double min = pointsDistances[0].Distance;
+            double min = listOfPointsDistances[0].Distance;
 
-            for (int i = 1; i < pointsDistances.Count; i++)
+            for (int i = 1; i < listOfPointsDistances.Count; i++)
             {
-                if (pointsDistances[i].Distance < min)
+                if (listOfPointsDistances[i].Distance < min)
                 {
-                    min = pointsDistances[i].Distance;
-                    pointsDistance = pointsDistances[i];
+                    min = listOfPointsDistances[i].Distance;
+                    pointsDistance = listOfPointsDistances[i];
                 }
             }
 

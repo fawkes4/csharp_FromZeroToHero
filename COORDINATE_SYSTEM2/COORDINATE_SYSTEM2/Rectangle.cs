@@ -8,8 +8,8 @@ namespace COORDINATE_SYSTEM2
 {
     internal class Rectangle : IFigure
     {
-        public Point Point1 { get; }
-        public Point Point2 { get; }
+        //public Point Point1 { get; }
+        //public Point Point2 { get; }
         public double Distance1 { get; }
         public double Distance2 { get; }
 
@@ -17,47 +17,33 @@ namespace COORDINATE_SYSTEM2
 
         public Rectangle(Point point1, Point point2) //TODO чотирикутник який задаватиметься через дві точки і знаходитиме всі решта точки
         {
-            Point1 = point1;
-            Point2 = point2;
+            Point point3 = new Point(point1.CoordinateX, point2.CoordinateY);
+            Point point4 = new Point(point2.CoordinateX, point1.CoordinateY);
 
-            GetPoints();
+            rectanglesPoints.Add(point1);
+            rectanglesPoints.Add(point2);
+            rectanglesPoints.Add(point3);
+            rectanglesPoints.Add(point4);
 
-            Distance1 = point1.DistanceTo(rectanglesPoints[2]);
-            Distance2 = point2.DistanceTo(rectanglesPoints[3]);
+            Distance1 = point1.DistanceTo(point3);
+            Distance2 = point2.DistanceTo(point4);
         }
 
         public List<Point> GetPoints()
         {
-            Point point3 = new Point(Point1.CoordinateX, Point2.CoordinateY);
-            Point point4 = new Point(Point2.CoordinateX, Point1.CoordinateY);
-
-            rectanglesPoints.Add(Point1);
-            rectanglesPoints.Add(Point2);
-            rectanglesPoints.Add(point3);
-            rectanglesPoints.Add(point4);
-
             return rectanglesPoints;
         }
 
-        public double Area()
-        {
-            double area;
-            area = Distance1 * Distance2;
-
-            return area;
-        }
+        public double Area() => Distance1 * Distance2;
 
         public double Perimeter()
         {
-            double perimeter;
-            perimeter = 2 * Distance1 + 2 * Distance2;
-
-            return perimeter;
+            return 2 * Distance1 + 2 * Distance2;
         }
 
         public override string ToString()
         {
-            return $"(The Rectangle's points are : {Point1}, {Point2}, {rectanglesPoints[2]}, {rectanglesPoints[3]}.";
+            return $"Rectangle with points : {rectanglesPoints[0]}, {rectanglesPoints[1]}, {rectanglesPoints[2]}, {rectanglesPoints[3]}.";
         }
     }
 }
