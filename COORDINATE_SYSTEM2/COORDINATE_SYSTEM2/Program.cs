@@ -15,27 +15,60 @@ namespace COORDINATE_SYSTEM2
             Point p3 = new Point(5, 10);
             Point p4 = new Point(1, 1);
             Point p5 = new Point(7, 0);
-            
-            coordinateSystem.Add(p1); 
+            Point p6 = new Point(8, 11);
+            Point p7 = new Point(2, 4);
+            Point p8 = new Point(0, -4);
+            Point p9 = new Point(8, 1);
+            Point p10 = new Point(0, 1);
+            Point p11 = new Point(1, 2);
+            Point p12 = new Point(3, 1);
+
+            Rectangle rectangle1 = new Rectangle(p6, p7);
+            Rectangle rectangle2 = new Rectangle(p8, p9);
+
+            Triangle triangle1 = new Triangle(p10, p11, p12);
+
+            coordinateSystem.Add(p1);
             coordinateSystem.Add(p2);
             coordinateSystem.Add(p3);
             coordinateSystem.Add(p4);
             coordinateSystem.Add(p5);
 
-            Console.WriteLine(p1.XAxisReflection()); 
-            Console.WriteLine(p1.DistanceTo(p2));
+            coordinateSystem.Add(rectangle1);
+            coordinateSystem.Add(rectangle2);
 
+            coordinateSystem.Add(triangle1);
+
+            Console.WriteLine("List of all points :\n");
             coordinateSystem.DisplayAllPoints();
 
+            Console.WriteLine("\nPRINTING ALL DISTANCES!!! :\n");
+            coordinateSystem.PrintAllDistances();
+            Console.WriteLine("\nPRINTING ALL DISTANCES!!! :\n");
+            coordinateSystem.PrintAllDistances();
+            Console.WriteLine("\nPRINTING ALL DISTANCES!!! :\n");
             coordinateSystem.PrintAllDistances();
 
+            Console.WriteLine("\nMax distance :\n");
             var maxDistance = coordinateSystem.MaxDistance();
             Console.WriteLine($"the max distance is : {maxDistance}");
 
+            Console.WriteLine("\nMin distance :\n");
             var minDistance = coordinateSystem.MinDistance();
             Console.WriteLine($"the min distance is : {minDistance}");
 
-            coordinateSystem.MinDistance();
+            Console.WriteLine("\nAREAS IN THE SKY :\n");
+            coordinateSystem.PrintAreas();
+
+            Console.WriteLine("\nAll Perimeters :\n");
+            coordinateSystem.PrintPerimeter();
+
+
+            Point p14 = new Point(10, 1);
+            Point p15 = new Point(10, 1);
+
+            Console.WriteLine(p14.Equals(p15));
+            Console.WriteLine(p14 == p15);
         }
 
     }

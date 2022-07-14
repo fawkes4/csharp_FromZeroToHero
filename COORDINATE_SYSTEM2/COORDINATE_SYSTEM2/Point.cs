@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace COORDINATE_SYSTEM2
 {
-    internal class Point
+    /// <summary>
+    /// Клас Point. Цей клас створює точку через конструктор, 
+    /// містить ToString(), 
+    /// рахує відстань між двома точками DistanceTo(), 
+    /// створює нову точку, що відображається відносно осі.
+    /// </summary>
+    internal class Point : IFigure
     {
         private int coordinateX;
         private int coordinateY;
@@ -26,10 +32,14 @@ namespace COORDINATE_SYSTEM2
         {
             get { return this.coordinateY; }
         }
+        public override bool Equals(object obj)
+        {
+            return (obj is Point point) && point.CoordinateX == this.coordinateX && point.CoordinateY == this.coordinateY;
+        }
 
         public override string ToString()
         {
-            return $"({coordinateX}, {coordinateY})";
+            return $"Point ({coordinateX}, {coordinateY})";
         }
 
         public double DistanceTo(Point point)
@@ -41,6 +51,28 @@ namespace COORDINATE_SYSTEM2
 
             return distanceBetwPoints;
         }
+        public double Area()
+        {
+            double area = 0.0;
+            return area;
+        }
+
+        public double Perimeter()
+        {
+            double perimeter = 0.0;
+            return perimeter;
+        }
+
+        public List<Point> GetPoints()
+        {
+            List<Point> points = new List<Point>() { this };
+            return points;
+        }
+
+        //public List<Point> GetPoints()
+        //{
+        //    return new List<Point>() { this };
+        //}
 
         public Point XAxisReflection()
         {

@@ -6,28 +6,99 @@ using System.Threading.Tasks;
 
 namespace COORDINATE_SYSTEM2
 {
+    /// <summary>
+    /// Клас Координатна система.
+    /// Містить Ліст всіх створених точок та Ліст всіх знайдених дистанцій.
+    /// Містить Add(), який створює нову точку, добавляє її в Ліст, шукає відстані 
+    /// між існуючими точками до нової точки і добавляє їх в ліст.
+    /// Містить DisplayAllPoints(), який друкує всі точки з ліста.
+    /// Містить MaxDistance() для пошуку максимальної відстані між точками.
+    /// Містить PrintAllDistances(), який друкує всі наявні відстані з Ліста.
+    /// </summary>
     internal class CoordinateSystem
     {
-        List<Point> listOfPoints = new List<Point>();
+        List<IFigure> figures = new List<IFigure>();
 
         List<PointsDistance> pointsDistances = new List<PointsDistance>();
 
-        public void Add(Point point)
+        public void Add(IFigure figure)
         {
-            foreach (Point point1 in listOfPoints)
-            {
-                PointsDistance distance = new PointsDistance(point, point1);
-                pointsDistances.Add(distance);
-            }
+            figures.Add(figure);
+        }
 
-            listOfPoints.Add(point);
+        public void PrintAreas()
+        {
+            foreach (IFigure figure in figures)
+            {
+                var area = figure.Area() == 0 ? "N / A" : figure.Area().ToString();
+                Console.WriteLine(figure.ToString());
+                Console.WriteLine($"Area is {area}\n");
+            }
+        }
+
+        public void PrintPerimeter()
+        {
+            foreach (IFigure figure in figures)
+            {
+                var perimeter = figure.Perimeter();
+                var perimeterToString = perimeter == 0 ? "N / A" : perimeter.ToString();
+                Console.WriteLine(figure.ToString());
+                Console.WriteLine($"Perimeter is {perimeterToString}\n");
+            }
         }
 
         public void DisplayAllPoints()
         {
-            for (int i = 0; i < listOfPoints.Count; i++)
+            List<Point> points = GetFiguresPoints();
+
+            for (int i = 0; i < points.Count; i++)
             {
-                Console.WriteLine($"point {i} : {listOfPoints[i]};");
+                Console.WriteLine($"point {i} : {points[i]};");
+            }
+        }
+
+        List<Point> GetFiguresPoints()
+        {
+            List<Point> points = new List<Point>();
+
+            foreach (IFigure innerFigure in figures)
+            {
+                points.AddRange(innerFigure.GetPoints());
+            }
+
+            return points;
+        }
+        
+        /// <summary>
+        /// метод, що рахує і друкує всі відстані. 
+        /// Створюю два ліста, які набирають значень всіх існуючих точок.
+        /// перший цикл бере кожен елемент з першого ліста.
+        /// другий цикл йде по другому лісті, беручи кожен елемент ОКРІМ першого для пошуку відстані.
+        /// Після знаходження відстані - добавляю цб відстань в ліст відстаней та
+        /// КОЛИ другий ліст дійшов до свого кінця - видаляю перший елемент з ДРУГОГО ліста
+        /// аби уникнути повторень.
+        /// </summary>
+        public void PrintAllDistances()
+        {
+            pointsDistances.Clear();
+
+            List<Point> Points = GetFiguresPoints();
+
+            for (int i = 0; i < Points.Count; i++)
+            {
+                Point point = Points[i];
+
+                for (int j = i + 1; j < Points.Count; j++)
+                {
+                    Point point1 = Points[j];
+                    PointsDistance distance = new PointsDistance(point, point1);
+                    pointsDistances.Add(distance);
+                }
+            }
+
+            for (int i = 0; i < pointsDistances.Count; i++)
+            {
+                Console.WriteLine($"{i} : The distance between {pointsDistances[i].Point1} and {pointsDistances[i].Point2} is {pointsDistances[i].Distance}");
             }
         }
 
@@ -76,19 +147,5 @@ namespace COORDINATE_SYSTEM2
 
             return pointsDistance;
         }
-        
-        public void PrintAllDistances()
-        {
-            foreach (var item in pointsDistances)
-            {
-                Console.WriteLine($"The distance between {item.Point1} and {item.Point2} is {item.Distance}");
-            }
-        }
-        /*
-        public PointsDistance MinDistance()
-        {
-            PointsDistance pointsDistance2 = pointsDistances.Min(item => item.Distance);
-            return pointsDistance2;
-        }*/
     }
 }

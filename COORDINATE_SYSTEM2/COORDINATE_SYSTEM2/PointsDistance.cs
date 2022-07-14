@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace COORDINATE_SYSTEM2
 {
+    /// <summary>
+    /// Клас PointsDistance.
+    /// Містить конструктор, який рахує відстань між двома точками.
+    /// </summary>
     internal class PointsDistance
     {
         public Point Point1 { get; }
