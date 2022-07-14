@@ -23,11 +23,11 @@ namespace COORDINATE_SYSTEM2
             Point p11 = new Point(1, 2);
             Point p12 = new Point(3, 1);
 
-            Rectangle rectangle1  = new Rectangle(p6, p7);
-            Rectangle rectangle2  = new Rectangle(p8, p9);
+            Rectangle rectangle1 = new Rectangle(p6, p7);
+            Rectangle rectangle2 = new Rectangle(p8, p9);
 
             Triangle triangle1 = new Triangle(p10, p11, p12);
-            
+
             coordinateSystem.Add(p1);
             coordinateSystem.Add(p2);
             coordinateSystem.Add(p3);
@@ -42,6 +42,10 @@ namespace COORDINATE_SYSTEM2
             Console.WriteLine("List of all points :\n");
             coordinateSystem.DisplayAllPoints();
 
+            Console.WriteLine("\nPRINTING ALL DISTANCES!!! :\n");
+            coordinateSystem.PrintAllDistances();
+            Console.WriteLine("\nPRINTING ALL DISTANCES!!! :\n");
+            coordinateSystem.PrintAllDistances();
             Console.WriteLine("\nPRINTING ALL DISTANCES!!! :\n");
             coordinateSystem.PrintAllDistances();
 

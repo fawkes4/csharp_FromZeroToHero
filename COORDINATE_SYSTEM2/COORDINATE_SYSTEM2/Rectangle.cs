@@ -8,10 +8,8 @@ namespace COORDINATE_SYSTEM2
 {
     internal class Rectangle : IFigure
     {
-        //public Point Point1 { get; }
-        //public Point Point2 { get; }
-        public double Distance1 { get; }
-        public double Distance2 { get; }
+        double Distance1 { get; }
+        double Distance2 { get; }
 
         List<Point> rectanglesPoints = new List<Point>();
 
