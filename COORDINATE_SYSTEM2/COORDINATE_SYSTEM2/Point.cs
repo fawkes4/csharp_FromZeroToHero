@@ -32,6 +32,10 @@ namespace COORDINATE_SYSTEM2
         {
             get { return this.coordinateY; }
         }
+        public override bool Equals(object obj)
+        {
+            return (obj is Point point) && point.CoordinateX == this.coordinateX && point.CoordinateY == this.coordinateY;
+        }
 
         public override string ToString()
         {

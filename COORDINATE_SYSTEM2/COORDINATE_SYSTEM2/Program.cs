@@ -62,6 +62,13 @@ namespace COORDINATE_SYSTEM2
 
             Console.WriteLine("\nAll Perimeters :\n");
             coordinateSystem.PrintPerimeter();
+
+
+            Point p14 = new Point(10, 1);
+            Point p15 = new Point(10, 1);
+
+            Console.WriteLine(p14.Equals(p15));
+            Console.WriteLine(p14 == p15);
         }
 
     }

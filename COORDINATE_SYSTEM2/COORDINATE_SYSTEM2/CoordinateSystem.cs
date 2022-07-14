@@ -17,18 +17,18 @@ namespace COORDINATE_SYSTEM2
     /// </summary>
     internal class CoordinateSystem
     {
-        List<IFigure> Figures = new List<IFigure>();
+        List<IFigure> figures = new List<IFigure>();
 
-        List<PointsDistance> PointsDistances = new List<PointsDistance>();
+        List<PointsDistance> pointsDistances = new List<PointsDistance>();
 
         public void Add(IFigure figure)
         {
-            Figures.Add(figure);
+            figures.Add(figure);
         }
 
         public void PrintAreas()
         {
-            foreach (IFigure figure in Figures)
+            foreach (IFigure figure in figures)
             {
                 var area = figure.Area() == 0 ? "N / A" : figure.Area().ToString();
                 Console.WriteLine(figure.ToString());
@@ -38,7 +38,7 @@ namespace COORDINATE_SYSTEM2
 
         public void PrintPerimeter()
         {
-            foreach (IFigure figure in Figures)
+            foreach (IFigure figure in figures)
             {
                 var perimeter = figure.Perimeter();
                 var perimeterToString = perimeter == 0 ? "N / A" : perimeter.ToString();
@@ -49,26 +49,26 @@ namespace COORDINATE_SYSTEM2
 
         public void DisplayAllPoints()
         {
-            List<Point> listOfPoints = GetFiguresPoints();
+            List<Point> points = GetFiguresPoints();
 
-            for (int i = 0; i < listOfPoints.Count; i++)
+            for (int i = 0; i < points.Count; i++)
             {
-                Console.WriteLine($"point {i} : {listOfPoints[i]};");
+                Console.WriteLine($"point {i} : {points[i]};");
             }
         }
 
         List<Point> GetFiguresPoints()
         {
-            List<Point> Points = new List<Point>();
+            List<Point> points = new List<Point>();
 
-            foreach (IFigure innerFigure in Figures)
+            foreach (IFigure innerFigure in figures)
             {
-                Points.AddRange(innerFigure.GetPoints());
+                points.AddRange(innerFigure.GetPoints());
             }
 
-            return Points;
+            return points;
         }
-
+        
         /// <summary>
         /// метод, що рахує і друкує всі відстані. 
         /// Створюю два ліста, які набирають значень всіх існуючих точок.
@@ -80,68 +80,45 @@ namespace COORDINATE_SYSTEM2
         /// </summary>
         public void PrintAllDistances()
         {
-            PointsDistances.Clear();
+            pointsDistances.Clear();
 
-            List<Point> listOfPoints = GetFiguresPoints();
-            List<Point> listOfPoints2 = GetFiguresPoints();
+            List<Point> Points = GetFiguresPoints();
 
-            foreach (Point point in listOfPoints)
+            for (int i = 0; i < Points.Count; i++)
             {
-                for (int i = 1; i < listOfPoints2.Count; i++)
+                Point point = Points[i];
+
+                for (int j = i + 1; j < Points.Count; j++)
                 {
-                    int count = i;
-                    Point point1 = listOfPoints2[i];
-                    PointsDistance distance = new PointsDistance(point1, point);
-                    PointsDistances.Add(distance);
+                    Point point1 = Points[j];
+                    PointsDistance distance = new PointsDistance(point, point1);
+                    pointsDistances.Add(distance);
                 }
-                listOfPoints2.RemoveAt(0);
             }
 
-            for (int i = 0; i < PointsDistances.Count; i++)
+            for (int i = 0; i < pointsDistances.Count; i++)
             {
-                Console.WriteLine($"{i} : The distance between {PointsDistances[i].Point1} and {PointsDistances[i].Point2} is {PointsDistances[i].Distance}");
+                Console.WriteLine($"{i} : The distance between {pointsDistances[i].Point1} and {pointsDistances[i].Point2} is {pointsDistances[i].Distance}");
             }
         }
-
-        //public void PrintAllDistances2()
-        //{
-        //    List<Point> Points = GetFiguresPoints();
-
-        //    for(int i = 0; i < Points.Count; i++)
-        //    {
-        //        Point point = Points[i];
-
-        //        for(int j = 0; j < Points.Count; j++)
-        //        {
-        //            Point point1 = Points[j];
-        //            PointsDistance distance = new PointsDistance(point, point1);
-        //            PointsDistances.Add(distance);
-        //        }
-        //    }
-
-        //    foreach (var item in PointsDistances)
-        //    {
-        //        Console.WriteLine($"The distance between {item.Point1} and {item.Point2} is {item.Distance}");
-        //    }
-        //}
 
         public PointsDistance MaxDistance()
         {
             PointsDistance pointsDistance = null;
 
-            if (PointsDistances.Count == 0)
+            if (pointsDistances.Count == 0)
             {
                 return null;
             }
 
-            double max = PointsDistances[0].Distance;
+            double max = pointsDistances[0].Distance;
 
-            for (int i = 1; i < PointsDistances.Count; i++)
+            for (int i = 1; i < pointsDistances.Count; i++)
             {
-                if (PointsDistances[i].Distance > max)
+                if (pointsDistances[i].Distance > max)
                 {
-                    max = PointsDistances[i].Distance;
-                    pointsDistance = PointsDistances[i];
+                    max = pointsDistances[i].Distance;
+                    pointsDistance = pointsDistances[i];
                 }
             }
 
@@ -152,19 +129,19 @@ namespace COORDINATE_SYSTEM2
         {
             PointsDistance pointsDistance = null;
 
-            if (PointsDistances.Count == 0)
+            if (pointsDistances.Count == 0)
             {
                 return null;
             }
 
-            double min = PointsDistances[0].Distance;
+            double min = pointsDistances[0].Distance;
 
-            for (int i = 1; i < PointsDistances.Count; i++)
+            for (int i = 1; i < pointsDistances.Count; i++)
             {
-                if (PointsDistances[i].Distance < min)
+                if (pointsDistances[i].Distance < min)
                 {
-                    min = PointsDistances[i].Distance;
-                    pointsDistance = PointsDistances[i];
+                    min = pointsDistances[i].Distance;
+                    pointsDistance = pointsDistances[i];
                 }
             }
 
