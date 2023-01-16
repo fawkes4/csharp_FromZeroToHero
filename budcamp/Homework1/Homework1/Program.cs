@@ -15,7 +15,7 @@ namespace Homework1
 
             while (true)
             {
-                Console.WriteLine("Choose task number (1-13), 'q' to exit.");
+                Console.WriteLine($"Choose task number(1 - {tasks.Length}");
 
                 String input = Console.ReadLine();
 
