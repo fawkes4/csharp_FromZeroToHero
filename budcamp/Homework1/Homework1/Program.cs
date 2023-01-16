@@ -153,7 +153,7 @@ namespace Homework1
             Console.WriteLine("enter the circle radius");
             int radius = int.Parse(Console.ReadLine());
             Console.WriteLine($"Perimeter = {2 * radius * Math.PI}");
-            Console.WriteLine($"Area = {2 * Math.PI * radius * radius}");
+            Console.WriteLine($"Area = {Math.PI * radius * radius}");
         }
 
         private static void Task10()
