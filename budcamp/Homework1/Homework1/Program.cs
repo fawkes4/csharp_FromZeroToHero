@@ -24,7 +24,7 @@ namespace Homework1
                     break;
                 }
 
-                if (int.TryParse(input, out int task) && task >= 1 && task <= 13)
+                if (int.TryParse(input, out int task) && task >= 1 && task <= tasks.Length)
                 {
                     tasks[task - 1]();
                 }
