@@ -6,77 +6,89 @@ namespace Homework1
     {
         static void Main(string[] args)
         {
-            //int number = 24;
-            //Console.WriteLine($"variable name is: {nameof(number)} and its value is: {number}");
+            //1.Exercise
+            int number = 24;
+            Console.WriteLine($"variable name is: {nameof(number)} and its value is: {number}");
 
-            //Console.WriteLine("enter first num");
-            //double input1 = int.Parse(Console.ReadLine());
-            //Console.WriteLine("enter second num");
-            //double input2 = int.Parse(Console.ReadLine());
-            //Console.WriteLine("enter third num");
-            //double input3 = int.Parse(Console.ReadLine());
+            //2.Exercise
+            Console.WriteLine("enter first num");
+            double input1 = int.Parse(Console.ReadLine());
+            Console.WriteLine("enter second num");
+            double input2 = int.Parse(Console.ReadLine());
+            Console.WriteLine("enter third num");
+            double input3 = int.Parse(Console.ReadLine());
 
-            //double multiplication = input1 * input2 * input3;
+            double multiplication = input1 * input2 * input3;
 
-            //Console.WriteLine($"The multiplication of your numbers is: {multiplication}");
+            Console.WriteLine($"The multiplication of your numbers is: {multiplication}");
 
-            //Console.WriteLine("Enter your string");
-            //string input = Console.ReadLine();
+            //3.Exercise
+            Console.WriteLine("Enter your string");
+            string input = Console.ReadLine();
 
-            //Console.WriteLine($"Result of swaping first and last chars is: {SwapFirstAndLastChar(input)}");
+            Console.WriteLine($"Result of swaping first and last chars is: {SwapFirstAndLastChar(input)}");
 
-            //Console.WriteLine("Pls enter first integer");
-            //int num1 = int.Parse(Console.ReadLine());
-            //Console.WriteLine("Pls enter second integer");
-            //int num2 = int.Parse(Console.ReadLine());
+            //4.Exercise
+            Console.WriteLine("Pls enter first integer");
+            int num1 = int.Parse(Console.ReadLine());
+            Console.WriteLine("Pls enter second integer");
+            int num2 = int.Parse(Console.ReadLine());
 
-            //double sum = num1 + num2;
-            //Console.WriteLine($"Their sum: {sum}");
+            double sum = num1 + num2;
+            Console.WriteLine($"Their sum: {sum}");
 
-            //Console.WriteLine($"result of exercise: {TripleSumOfDivBy8(num1, num2, sum)}");
+            Console.WriteLine($"result of exercise: {TripleSumOfDivBy8(num1, num2, sum)}");
 
-            //Console.WriteLine("enter first int");
-            //double number1 = int.Parse(Console.ReadLine());
-            //Console.WriteLine("enter second int");
-            //double number2 = int.Parse(Console.ReadLine());
-            //Console.WriteLine("enter third int");
-            //double number3 = int.Parse(Console.ReadLine());
+            //5.Exercise
+            Console.WriteLine("enter first int");
+            double number1 = int.Parse(Console.ReadLine());
+            Console.WriteLine("enter second int");
+            double number2 = int.Parse(Console.ReadLine());
+            Console.WriteLine("enter third int");
+            double number3 = int.Parse(Console.ReadLine());
 
-            //Console.WriteLine($"Largest value = {LargestValue(number1, number2, number3)}");
-            //Console.WriteLine($"Lowest value = {LowestValue(number1, number2, number3)}");
+            Console.WriteLine($"Largest value = {LargestValue(number1, number2, number3)}");
+            Console.WriteLine($"Lowest value = {LowestValue(number1, number2, number3)}");
 
-            //Console.WriteLine("plz input your string");
-            //string inputString = Console.ReadLine();
-            //Console.WriteLine($"Result of the ex: {StrToUpperCase(inputString)}");
+            //6.Exercise
+            Console.WriteLine("plz input your string");
+            string inputString = Console.ReadLine();
+            Console.WriteLine($"Result of the ex: {StrToUpperCase(inputString)}");
 
-            //Console.WriteLine("enter your int to check if it is multiple of 3 or 7");
-            //int newInput = int.Parse(Console.ReadLine());
-            //Console.WriteLine(IsMultipleOf3Or7(newInput));
+            //7.Exercise
+            Console.WriteLine("enter your int to check if it is multiple of 3 or 7");
+            int newInput = int.Parse(Console.ReadLine());
+            Console.WriteLine(IsMultipleOf3Or7(newInput));
 
-            //Console.WriteLine("enter your string to check if it starts with 'C#'");
-            //string str = Console.ReadLine();
-            //Console.WriteLine($"result: {CheckStartOfString(str)}");
+            //8.Exercise
+            Console.WriteLine("enter your string to check if it starts with 'C#'");
+            string str = Console.ReadLine();
+            Console.WriteLine($"result: {CheckStartOfString(str)}");
 
-            //Console.WriteLine("enter the circle radius");
-            //int radius = int.Parse(Console.ReadLine());
-            //Console.WriteLine($"Perimeter = {2*radius*3.14} \nArea = {2*3.14*radius*radius}");
+            //9.Exercise
+            Console.WriteLine("enter the circle radius");
+            int radius = int.Parse(Console.ReadLine());
+            Console.WriteLine($"Perimeter = {2 * radius * 3.14} \nArea = {2 * 3.14 * radius * radius}");
 
-            //Console.WriteLine(SumAndAverageOf10Num()); 
+            //10.Exercise
+            Console.WriteLine(SumAndAverageOf10Num());
 
-            //MultiplicationTable();
+            //11.Exercise
+            MultiplicationTable();
 
-            //Console.WriteLine("enter first num");
-            //int firstNum = int.Parse(Console.ReadLine());
-            //Console.WriteLine("enter second num");
-            //int secondNum = int.Parse(Console.ReadLine());
-            //Console.WriteLine(NumbersDivBy8BetweenInt(firstNum, secondNum));
+            //12.Exercise
+            Console.WriteLine("enter first num");
+            int firstNum = int.Parse(Console.ReadLine());
+            Console.WriteLine("enter second num");
+            int secondNum = int.Parse(Console.ReadLine());
+            Console.WriteLine(NumbersDivBy8BetweenInt(firstNum, secondNum));
 
+            //13.Exercise
             ChanelAverageRating(TVChannels.Loliandia);
             ChanelAverageRating(TVChannels.Dota2Channel);
             ChanelAverageRating(TVChannels.CSharpCourses);
             ChanelAverageRating(TVChannels.AwesomeDudes);
             ChanelAverageRating(TVChannels.XXXForYou);
-
         }
 
         public static string SwapFirstAndLastChar(string input)
