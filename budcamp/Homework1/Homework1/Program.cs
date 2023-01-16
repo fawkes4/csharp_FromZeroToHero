@@ -6,31 +6,33 @@ namespace Homework1
     {
         static void Main(string[] args)
         {
-            Task1();
+            MenuOfTasks();
+        }
 
-            Task2();
+        private static void MenuOfTasks()
+        {
+            Action[] tasks = { Task1, Task2, Task3, Task4, Task5, Task6, Task7, Task8, Task9, Task10, Task11, Task12, Task13 };
 
-            Task3();
+            while (true)
+            {
+                Console.WriteLine("Choose task number (1-13), 'q' to exit.");
 
-            Task4();
+                String input = Console.ReadLine();
 
-            Task5();
+                if (input == "q")
+                {
+                    break;
+                }
 
-            Task6();
-
-            Task7();
-
-            Task8();
-
-            Task9();
-
-            Task10();
-
-            Task11();
-
-            Task12();
-
-            Task13();
+                if (int.TryParse(input, out int task) && task >= 1 && task <= 13)
+                {
+                    tasks[task - 1]();
+                }
+                else
+                {
+                    Console.WriteLine("Incorrect task number.");
+                }
+            }
         }
 
         public static void Task1()
@@ -113,13 +115,9 @@ namespace Homework1
             int length = input.Length;
             int condition = 5;
 
-            if (length == condition)
+            if (length >= condition)
             {
-                return input.ToUpper();
-            }
-            else if (length > condition)
-            {
-                return input.Substring(0, 4).ToUpper() + input.Substring(5, length - 5);
+                return input.Substring(0, 5).ToUpper() + input.Substring(5, length - 5);
             }
 
             return input;
@@ -154,7 +152,8 @@ namespace Homework1
         {
             Console.WriteLine("enter the circle radius");
             int radius = int.Parse(Console.ReadLine());
-            Console.WriteLine($"Perimeter = {2 * radius * Math.PI} \nArea = {2 * Math.PI * radius * radius}");
+            Console.WriteLine($"Perimeter = {2 * radius * Math.PI}");
+            Console.WriteLine($"Area = {2 * Math.PI * radius * radius}");
         }
 
         private static void Task10()
@@ -182,11 +181,6 @@ namespace Homework1
 
         private static void Task11()
         {
-            MultiplicationTable();
-        }
-
-        public static void MultiplicationTable()
-        {
             Console.WriteLine("input number of how you want to see size of mult.table:");
             int size = int.Parse(Console.ReadLine());
 
@@ -212,10 +206,13 @@ namespace Homework1
         {
             Console.WriteLine("enter first num");
             int firstNum = int.Parse(Console.ReadLine());
+
             Console.WriteLine("enter second num");
             int secondNum = int.Parse(Console.ReadLine());
+
             Console.WriteLine(NumbersDivBy8BetweenInt(firstNum, secondNum));
         }
+
         public static string NumbersDivBy8BetweenInt(int input1, int input2)
         {
             int count = 0;
@@ -243,7 +240,11 @@ namespace Homework1
         }
         public enum TVChannels
         {
-            Loliandia, Dota2Channel, CSharpCourses, AwesomeDudes, XXXForYou
+            Loliandia, 
+            Dota2Channel, 
+            CSharpCourses, 
+            AwesomeDudes, 
+            XXXForYou
         }
 
         public static void ChanelAverageRating(TVChannels chanel)
