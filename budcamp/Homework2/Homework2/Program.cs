@@ -13,6 +13,10 @@ namespace Homework2
             Task3();
 
             Task4();
+
+            Task5();
+
+            Task6();
         }
 
         private static void Task1()
@@ -116,6 +120,32 @@ namespace Homework2
             }
 
             Console.WriteLine($"Total number of duplicate elements found in the array is : {count}");
+        }
+
+        private static void Task5()
+        {
+            Console.WriteLine("Input two integers :");
+            int num1 = int.Parse(Console.ReadLine());
+            int num2 = int.Parse(Console.ReadLine());
+
+            SwapInteger(num1, num2);
+
+            Console.WriteLine($"Now the 1st number is : {num1} , and the 2nd number is : {num2}");
+        }
+
+        public static void SwapInteger(int num1, int num2)
+        {
+            int num3 = num1;
+            num1 = num2;
+            num2 = num3;
+        }
+
+        private static void Task6()
+        {
+            Point point = new Point();
+            string input = Console.ReadLine();
+
+            point = point.TryParsePoint(input, out point);
         }
     }
 }
