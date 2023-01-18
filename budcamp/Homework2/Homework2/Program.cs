@@ -143,9 +143,11 @@ namespace Homework2
         private static void Task6()
         {
             Point point = new Point();
+
+            Console.WriteLine("Pls enter value for a Point in this format '2, 3' or '2,3'");
             string input = Console.ReadLine();
 
-            point = point.TryParsePoint(input, out point);
+            point.TryParsePoint(input, out point);
         }
     }
 }
