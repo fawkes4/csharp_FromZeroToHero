@@ -36,8 +36,8 @@ namespace Homework2
                 if (int.TryParse(splitedString[0], out int num1)
                     && int.TryParse(splitedString[1], out int num2))
                 {
-                    num1 = (int)point.X;
-                    num2 = (int)point.Y;
+                    point.X = num1;
+                    point.Y = num2;
                 }
                 else
                 {
