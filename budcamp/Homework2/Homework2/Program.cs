@@ -51,28 +51,35 @@ namespace Homework2
 
         private static void Task3()
         {
-            Console.WriteLine("Input the number of elements to store in the array :");
-            int arraySize = int.Parse(Console.ReadLine());
-            int[] numbers = new int[arraySize];
-
-            for(int i = 0; i < numbers.Length; i++)
+            try
             {
-                Console.WriteLine($"pls enter your {i + 1} number");
-                numbers[i] = int.Parse(Console.ReadLine());
+                Console.WriteLine("Input the number of elements to store in the array :");
+                int arraySize = int.Parse(Console.ReadLine());
+                int[] numbers = new int[arraySize];
 
-                Console.Clear();
+                for (int i = 0; i < numbers.Length; i++)
+                {
+                    Console.WriteLine($"pls enter your {i + 1} number");
+                    numbers[i] = int.Parse(Console.ReadLine());
+
+                    Console.Clear();
+                }
+
+                Console.WriteLine("The values store into the array are :");
+
+                foreach (int value in numbers)
+                {
+                    Console.Write(value + " ");
+                }
+
+                Console.WriteLine();
+
+                PrintReverseValues(numbers);
             }
-
-            Console.WriteLine("The values store into the array are :");
-
-            foreach(int value in numbers)
+            catch (Exception)
             {
-                Console.Write(value + " ");
+                Console.WriteLine("Something goes wrong with you input data. Are you sure you entered an int?");
             }
-
-            Console.WriteLine();
-
-            PrintReverseValues(numbers);
         }
 
         public static void PrintReverseValues(int[] inputArr)
@@ -90,36 +97,48 @@ namespace Homework2
         private static void Task4()
         {
             Console.WriteLine("Input the number of elements to store in the array :");
-            int arraySize = int.Parse(Console.ReadLine());
-            int[] numbers = new int[arraySize];
 
-            for (int i = 0; i < numbers.Length; i++)
+            try
             {
-                Console.WriteLine($"pls enter your {i + 1} number");
-                numbers[i] = int.Parse(Console.ReadLine());
+                int arraySize = int.Parse(Console.ReadLine());
+                int[] numbers = new int[arraySize];
 
-                Console.Clear();
+                for (int i = 0; i < numbers.Length; i++)
+                {
+                    Console.WriteLine($"pls enter your {i + 1} number");
+                    numbers[i] = int.Parse(Console.ReadLine());
+
+                    Console.Clear();
+                }
+
+                FindDuplicateElements(numbers);
             }
-
-            FindDuplicateElements(numbers);
+            catch (Exception)
+            {
+                Console.WriteLine("Something goes wrong with you input data.Are you sure you entered an int ?");
+            }
+           
         }
 
         public static void FindDuplicateElements(int[] inputArr)
         {
-            int count = 0;
+            Dictionary<int, int> valueCountPairs = new Dictionary<int, int>();
 
-            for (int i = 0; i < inputArr.Length; i++)
+            foreach (int value in inputArr)
             {
-                for (int j = i + 1; j < inputArr.Length; j++)
+                if (!valueCountPairs.ContainsKey(value))
                 {
-                    if (inputArr[i] == inputArr[j])
-                    {
-                        count++;
-                    }
+                    valueCountPairs.Add(value, 1);
+                }
+                else
+                {
+                    valueCountPairs[value]++;
                 }
             }
 
-            Console.WriteLine($"Total number of duplicate elements found in the array is : {count}");
+            int duplicateMaxCount = valueCountPairs.Values.Max();
+
+            Console.WriteLine($"Total number of duplicate elements found in the array is : {duplicateMaxCount}");
         }
 
         private static void Task5()
