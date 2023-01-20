@@ -11,6 +11,17 @@ namespace Homework4
         public int BatteryLevel { get; set; }
         public string PhoneName { get; set; }
 
+        public Nokia3310(int batteryLevel, string phoneName)
+        {
+            this.BatteryLevel = batteryLevel;
+            this.PhoneName = phoneName;
+
+            if (batteryLevel < 0 && batteryLevel > 100)
+            {
+                throw new BatteryLevelException(batteryLevel);
+            }
+        }
+
         public void PrayForBattery()
         {
             if(BatteryLevel < 92)
@@ -70,9 +81,11 @@ namespace Homework4
                 }
                 finally
                 {
-                    if (phone is )
+                    if (phone is Nokia3310)
                     {
-
+                        PrayForBattery();
+                        CallAmbulance();
+                        ChargeABit();
                     }
                 }
             }

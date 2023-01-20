@@ -11,9 +11,10 @@ namespace Homework4
         public int BatteryLevel { get; set; }
         public string PhoneName { get; set; }
 
-        public Iphone88(int batteryLevel)
+        public Iphone88(int batteryLevel, string phoneName)
         {
             this.BatteryLevel = batteryLevel;
+            this.PhoneName = phoneName;
 
             if (batteryLevel < 0 && batteryLevel > 100)
             {
@@ -55,12 +56,22 @@ namespace Homework4
                 {
                     phone.CallAmbulance();
                 }
-                catch (Exception ex)
+                catch (BatteryIsDeadException ex)
                 {
-                    Console.WriteLine("Phone failed to call an ambulance: phoneType");
+                    Console.WriteLine($"Phone failed to call an ambulance: {ex.Phone}");
                     throw;
                 }
-
+                catch (Exception ex)
+                {
+                    throw;
+                }
+                finally
+                {
+                    if (phone is Nokia3310)
+                    {
+                        ChargeABit();
+                    }
+                }
             }
         }
     }

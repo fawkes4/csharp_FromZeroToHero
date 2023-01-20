@@ -37,7 +37,7 @@ namespace Homework4
             Console.WriteLine($"Charging {PhoneName} by 1%");
         }
 
-        public void TestEmergency(PhoneEmergencyTestHolder phoneEmergencyTestHolder)
+        public virtual void TestEmergency(PhoneEmergencyTestHolder phoneEmergencyTestHolder)
         {
             foreach (IPhone phone in phoneEmergencyTestHolder)
             {
@@ -53,13 +53,6 @@ namespace Homework4
                 catch (Exception ex)
                 {
                     throw;
-                }
-                finally
-                {
-                    if (phone.)
-                    {
-
-                    }
                 }
             }
         }
