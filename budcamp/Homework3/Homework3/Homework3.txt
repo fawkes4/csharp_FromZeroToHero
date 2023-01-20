@@ -1,0 +1,91 @@
+=============== Theory ===============
+1. Go through lecture material. Read additional material.
+
+
+=============== Practice ===============
+0. Go through examples, play with code
+
+1. Design own class hierarchy. Display how it works by calling methods as in examples.
+Requirements:
+	- should have abstract and virtual methods
+	- should have constructors chaining (this(), base())
+	- at least one method with use of "base" keyword
+	- should have private/protected/public methods
+	- use object inializer
+	- classes should have properties and fields
+	- use static/readonly/const keywords
+	- NOT LIMITED BY ABOVE STATEMENTS
+
+Example: 
+Cars, Musical instruments, Shapes
+
+2.	* Create types for storing tests. 
+	  Test should contain unique identifier, topic and question.
+	  There should be two types of tests: 
+		- CASE - select one correct answer from multiple cases.
+		- JUST_STR - input correct answer
+	  Test should contain correct answer.
+	  Test should have method that returns if user answer is correct or not.
+
+	* Store all tests in one container.
+	
+	* Store resaults of passed tests.
+	
+	* User should be able to pass test for a topic
+	  Print all tests form that topic one by one and let user to type answer. 
+	  Calculate amount of correct answers.
+	  After the test is completed clean the console and print the result of the test and the menu.
+
+	* Add menu so user can switch between tests and resluts 
+
+Example:
+1 - Pass test
+2 - Results
+
+>> 2
+Your passed tests:
+Id: 2312 
+Topic: math
+Date: 12/01/2023 
+Result: 12/20 (60%)
+
+Id: 23323412 
+Topic: c#
+Date: 14/01/2023 
+Result: 20/20 (100%)
+
+1 - Pass test
+2 - Results
+
+>> 1 
+Please select topic:
+math
+
+// show all math questions
+
+3.  Design 2D coordinate system. 
+	- It should support the following figures: Point, Recatngle, Triangle;
+	- It should have method Add which accepts points, triangles and rectangles, also method Add should accept double X and Y to add single Point;
+	- It should be able to print all containing figures (type of figure and coordinates);
+	- It should be able to calculate distances between each point on the plane(should take into account points belonging to Triangle & Rectangle);
+	- It should have PrintAreas method: print the figures and their Areas, if it’s a single Point then print “N/A”;
+	- It should have PrintPerimeters method: print the figures and their Perimeters, if it’s a single Point then print “N/A”;
+	- Find two points with the biggest/smallest distance.
+	- Show the you work;
+	
+	Point class: 
+	- It should be able to print itself;
+	- It should have the method DistanceTo which takes another Point and returns the distance to the given point;
+	- It should have the method XAxisReflection/YAxisReflection - which return new Point with the same coordinates but a different sign;
+
+	Rectangle class: 
+	- It should be able to print itself;
+	- Should be create by using two points only(the ones which are on the same diagonal);
+	- Should be able to calculate its Area;
+	- Should be able to calculate its Perimeter;
+
+	Triangle class:
+	- It should be able to print itself;
+	- Should be described using three points;
+	- Should be able to calculate its Area(Heron’s formula);
+	- Should be able to calculate its Perimeter;
