@@ -15,7 +15,7 @@ namespace Homework3
             dictOfTests = new Dictionary<string, List<Test>>();
         }
 
-        public void AddTest(Test test)
+        public IEnumerable<Test> AddTest(Test test)
         {
             if (!dictOfTests.ContainsKey(test.Topic))
             {
@@ -24,8 +24,11 @@ namespace Homework3
             }
             else
             {
+                //dictOfTests[test.Topic].Add(test);
                 Console.WriteLine("this test is alredy exists or ID reserved");
             }
+
+            return //Enumerable.Empty<Test>();
         }
 
         public List<Test> GetTestByTopic(string topic)

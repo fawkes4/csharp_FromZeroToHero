@@ -9,14 +9,21 @@ namespace Homework3
     internal class CaseTest: Test
     {
         public CaseTest Type { get; set; }
-        public string[] Variants { get; set; }
+        public string[] Options { get; set; }
+
+        const int countOfTestOptions = 4;
 
         public CaseTest(int identifier, string topic, string question, string correctAnswer, 
             CaseTest type, string[] variants): 
             base(identifier, topic, question, correctAnswer)
         {
             this.Type = type;
-            this.Variants = variants;
+            this.Options = variants;
+
+            if (variants.Count() != countOfTestOptions)
+            {
+                throw new Exception("має бути 4-ри варіанти");
+            }
         }
 
         public override void PrintTest()
@@ -25,10 +32,10 @@ namespace Homework3
             Console.WriteLine();
             Console.WriteLine(Question);
             Console.WriteLine();
-            Console.WriteLine($"a) {Variants[0]}");
-            Console.WriteLine($"b) {Variants[1]}");
-            Console.WriteLine($"c) {Variants[2]}");
-            Console.WriteLine($"d) {Variants[3]}");
+            Console.WriteLine($"a) {Options[0]}");
+            Console.WriteLine($"b) {Options[1]}");
+            Console.WriteLine($"c) {Options[2]}");
+            Console.WriteLine($"d) {Options[3]}");
         }
 
         public override bool CheckAnswer(string userAnswer)

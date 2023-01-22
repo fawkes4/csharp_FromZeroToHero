@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Homework3
 {
-    internal abstract class History
+    internal class History
     {
         public string DeadRussians { get; set; }
         public virtual void PolishLithuanianCommonwealth() 

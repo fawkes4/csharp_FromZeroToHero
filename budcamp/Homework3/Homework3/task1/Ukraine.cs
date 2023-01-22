@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Homework3
 {
-    internal class Ukraine : History, ICountry
+    internal class Ukraine : ICountry
     {
         public int Population { get; set; }
         public string Gymn { get; set; }
@@ -15,6 +15,10 @@ namespace Homework3
         const bool independence = true;
 
         public readonly string vlomytyPizdy;
+
+        public History History { get; set; }
+
+        History history = new History("not enouph");
 
         public override void PolishLithuanianCommonwealth()
         {
