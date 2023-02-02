@@ -30,7 +30,11 @@ namespace Homework2
             markerGreen.PrintMarker();
             markerOrange.PrintMarker();
 
-            Marker? markerBlue = Marker.InitMarker(null);
+            Marker? markerNull = Marker.InitMarker(null);
+            markerNull ??= new Marker("default");
+            markerNull?.PrintMarker();
+
+            Marker? markerBlue = Marker.InitMarker("blue");
             markerBlue ??= new Marker("default");
             markerBlue?.PrintMarker();
         }
@@ -100,13 +104,13 @@ namespace Homework2
 
             try
             {
-                int arraySize = int.Parse(Console.ReadLine());
+                int arraySize = Convert.ToInt32(Console.ReadLine());
                 int[] numbers = new int[arraySize];
 
                 for (int i = 0; i < numbers.Length; i++)
                 {
                     Console.WriteLine($"pls enter your {i + 1} number");
-                    numbers[i] = int.Parse(Console.ReadLine());
+                    numbers[i] = Convert.ToInt32(Console.ReadLine());
 
                     Console.Clear();
                 }
@@ -117,18 +121,19 @@ namespace Homework2
             {
                 Console.WriteLine("Something goes wrong with you input data.Are you sure you entered an int ?");
             }
-           
+
         }
 
         public static void FindDuplicateElements(int[] inputArr)
         {
             Dictionary<int, int> valueCountPairs = new Dictionary<int, int>();
+            int duplicateMaxCount = 0;
 
             foreach (int value in inputArr)
             {
                 if (!valueCountPairs.ContainsKey(value))
                 {
-                    valueCountPairs.Add(value, 1);
+                    valueCountPairs.Add(value, 0);
                 }
                 else
                 {
@@ -136,7 +141,13 @@ namespace Homework2
                 }
             }
 
-            int duplicateMaxCount = valueCountPairs.Values.Max();
+            foreach (int value in valueCountPairs.Values)
+            {
+                if (value > 0)
+                {
+                    duplicateMaxCount += value;
+                }
+            }
 
             Console.WriteLine($"Total number of duplicate elements found in the array is : {duplicateMaxCount}");
         }
@@ -144,15 +155,15 @@ namespace Homework2
         private static void Task5()
         {
             Console.WriteLine("Input two integers :");
-            int num1 = int.Parse(Console.ReadLine());
-            int num2 = int.Parse(Console.ReadLine());
+            int num1 = Convert.ToInt32(Console.ReadLine());
+            int num2 = Convert.ToInt32(Console.ReadLine());
 
-            SwapInteger(num1, num2);
+            SwapInteger(ref num1, ref num2);
 
             Console.WriteLine($"Now the 1st number is : {num1} , and the 2nd number is : {num2}");
         }
 
-        public static void SwapInteger(int num1, int num2)
+        public static void SwapInteger(ref int num1, ref int num2)
         {
             int num3 = num1;
             num1 = num2;

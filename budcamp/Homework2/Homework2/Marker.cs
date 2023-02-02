@@ -28,7 +28,12 @@ namespace Homework2
 
         public static Marker? InitMarker(string? color)
         {
-            return new Marker(color);
+            if (color != null)
+            {
+                return new Marker(color);
+            }
+
+            return null;
         }
     }
 }
