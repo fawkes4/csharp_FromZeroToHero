@@ -121,32 +121,19 @@ namespace Homework2
             {
                 Console.WriteLine("Something goes wrong with you input data.Are you sure you entered an int ?");
             }
-
         }
 
         public static void FindDuplicateElements(int[] inputArr)
         {
-            Dictionary<int, int> valueCountPairs = new Dictionary<int, int>();
             int duplicateMaxCount = 0;
 
-            foreach (int value in inputArr)
-            {
-                if (!valueCountPairs.ContainsKey(value))
-                {
-                    valueCountPairs.Add(value, 0);
-                }
-                else
-                {
-                    valueCountPairs[value]++;
-                }
-            }
+            var innerCollection = inputArr.GroupBy(s => s)
+                .Select(a => new { Value = a.Key,  Count = a.Count()})
+                .Where(a => a.Count > 1);
 
-            foreach (int value in valueCountPairs.Values)
+            foreach (var s in innerCollection)
             {
-                if (value > 0)
-                {
-                    duplicateMaxCount += value;
-                }
+                duplicateMaxCount += s.Count - 1;
             }
 
             Console.WriteLine($"Total number of duplicate elements found in the array is : {duplicateMaxCount}");
