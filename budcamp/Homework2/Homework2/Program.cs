@@ -127,16 +127,9 @@ namespace Homework2
         {
             int duplicateMaxCount = 0;
 
-            //inputArr.GroupBy(s => s)
-            //    .Select(a => new { Value = a.Key,  Count = a.Count()})
-            //    .Where(a => a.Count > 1)
-            //    .ToList()
-            //    .ForEach(a => duplicateMaxCount += a.Count - 1);
-
             duplicateMaxCount = inputArr.GroupBy(s => s)
                 .Select(a => new { Value = a.Key, Count = a.Count() })
                 .Where(a => a.Count > 1)
-                .ToList()
                 .Sum(a => a.Count - 1);
 
             Console.WriteLine($"Total number of duplicate elements found in the array is : {duplicateMaxCount}");
