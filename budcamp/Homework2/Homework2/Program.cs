@@ -132,6 +132,8 @@ namespace Homework2
                 .Where(a => a.Count > 1)
                 .Sum(a => a.Count - 1);
 
+            //var dublicatesCount = inputArr.Length - inputArr.Distinct().Count(); - alternative case
+
             Console.WriteLine($"Total number of duplicate elements found in the array is : {duplicateMaxCount}");
         }
 
