@@ -6,17 +6,17 @@ namespace Homework2
     {
         static void Main(string[] args)
         {
-            Task1();
+            //Task1();
 
-            Task2();
+            //Task2();
 
-            Task3();
+            //Task3();
 
             Task4();
 
-            Task5();
+            //Task5();
 
-            Task6();
+            //Task6();
         }
 
         private static void Task1()
@@ -127,14 +127,17 @@ namespace Homework2
         {
             int duplicateMaxCount = 0;
 
-            var innerCollection = inputArr.GroupBy(s => s)
-                .Select(a => new { Value = a.Key,  Count = a.Count()})
-                .Where(a => a.Count > 1);
+            //inputArr.GroupBy(s => s)
+            //    .Select(a => new { Value = a.Key,  Count = a.Count()})
+            //    .Where(a => a.Count > 1)
+            //    .ToList()
+            //    .ForEach(a => duplicateMaxCount += a.Count - 1);
 
-            foreach (var s in innerCollection)
-            {
-                duplicateMaxCount += s.Count - 1;
-            }
+            duplicateMaxCount = inputArr.GroupBy(s => s)
+                .Select(a => new { Value = a.Key, Count = a.Count() })
+                .Where(a => a.Count > 1)
+                .ToList()
+                .Sum(a => a.Count - 1);
 
             Console.WriteLine($"Total number of duplicate elements found in the array is : {duplicateMaxCount}");
         }
