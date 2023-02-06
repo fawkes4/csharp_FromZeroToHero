@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace Homework3
 {
-    internal class Lithuania: History, ICountry
+    internal class Lithuania: ICountry
     {
         public int Population { get; set; }
         public string Gymn { get; set; }
         public string Flag { get; set; }
+        public string History { get; set; }
 
         public Lithuania(int population, string gymn, string flag, string deadRussians) : base(deadRussians)
         {
@@ -19,7 +20,7 @@ namespace Homework3
             this.Flag = flag;
         }
 
-        private string Weapon()
+        private string AskForWeapon()
         {
             return "we give you all u want to kill russians";
         }

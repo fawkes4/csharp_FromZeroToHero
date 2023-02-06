@@ -8,26 +8,31 @@ namespace Homework3
 {
     internal class TestResults
     {
-        private Dictionary<string, int> results;
+        public List<Test> Tests { get; set; }
+        public string Topic { get; set; }
+        public int CorrectAnswers { get; set; }
+        public DateTime DateOfTest { get; set; }
 
-        public TestResults()
+        private Dictionary<string, TestResults> testResults = new Dictionary<string, TestResults>();
+
+        public TestResults(Dictionary<string, TestResults> results)
         {
-            results = new Dictionary<string, int>();
+            this.testResults = results;
         }
 
-        public void AddResults(string topic, int mark)
+        public void AddResults(string topic, TestResults mark)
         {
-            results[topic] = mark;
+            testResults[topic] = mark;
         }
 
-        public int GetResults(string topic)
+        public TestResults GetResults(string topic)
         {
-            if (results.ContainsKey(topic))
+            if (testResults.ContainsKey(topic))
             {
-                return results[topic];
+                return testResults[topic];
             }
             
-            return 100500;
+            return null;
         }
     }
 }

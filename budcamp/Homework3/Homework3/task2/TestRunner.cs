@@ -9,24 +9,22 @@ namespace Homework3
     internal class TestRunner
     {
         private TestContainer testContainer;
-        private TestResults testResults;
-
-        int correctAnswers = 0;
-        string userAnswer = "";
 
         public TestRunner(TestContainer testContainer)
         {
             this.testContainer = testContainer;
-            testResults = new TestResults();
         }
 
-        public void RunTest(string topic)
+        public TestResults RunTest(string topic)
         {
-            List<Test> chosenTopic = testContainer.GetTestByTopic(topic);
+            int correctAnswers = 0;
 
-            foreach (Test test in chosenTopic)
+            List<Test> chosenTopicTests = testContainer.GetTestByTopic(topic);
+
+            foreach (Test test in chosenTopicTests)
             {
                 test.PrintTest();
+                string userAnswer = Console.ReadLine();
 
                 if (test.CheckAnswer(userAnswer))
                 {
@@ -34,15 +32,17 @@ namespace Homework3
                 }
             }
 
-            testResults.AddResults(topic, correctAnswers);
             Console.Clear();
-
-            Console.WriteLine($"Your score is {correctAnswers}");
-            Console.WriteLine();
-            Console.WriteLine("Press any key");
-
-            MainMenu mainMenu = new MainMenu();
             mainMenu.PrintMenu();
+
+            TestResults result = new TestResults()
+            {
+                Topic = topic,
+                Tests = tests,
+                Date = DateTime.Now,
+                CorrectAnswers = correctAnswers
+            };
+            return result;
         }
     }
 }

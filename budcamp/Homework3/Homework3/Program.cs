@@ -21,5 +21,7 @@ namespace Homework3
             MainMenu mainMenu = new MainMenu();
             mainMenu.PrintMenu();
         }
+
+        //initial tast
     }
 }

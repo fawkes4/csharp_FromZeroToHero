@@ -11,6 +11,7 @@ namespace Homework3
         public int Population { get; set; }
         public string Gymn { get; set; }
         public string Flag { get; set; }
+        public string History { get; set; }
 
         const bool independence = true;
 
@@ -33,12 +34,12 @@ namespace Homework3
             Gymn = gymn;
         }
 
-        public override void Symbols()
+        public override void GetSymbols()
         {
             Console.WriteLine($"*singing {Gymn} under the {Flag} flag*");
         }
 
-        protected void Borshch()
+        protected void CookBorshch()
         {
             Console.WriteLine("if Ua approve you can eat me");
         }

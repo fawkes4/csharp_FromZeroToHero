@@ -8,13 +8,10 @@ namespace Homework3
 {
     internal class JustStrTest: Test
     {
-        public JustStrTest Type { get; set; }
-
-        public JustStrTest(int identifier, string topic, string question, string correctAnswer,
-            JustStrTest type) :
-            base(identifier, topic, question, correctAnswer)
+        public JustStrTest(int identifier, string topic, string question, string correctAnswer) 
+            : base(identifier, topic, question, correctAnswer)
         {
-            this.Type = type;
+
         }
 
         public override void PrintTest()
@@ -27,7 +24,7 @@ namespace Homework3
 
         public override bool CheckAnswer(string userAnswer)
         {
-            return userAnswer == CorrectAnswer ? true : false;
+            return userAnswer == CorrectAnswer;
         }
     }
 }

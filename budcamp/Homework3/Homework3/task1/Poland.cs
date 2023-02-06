@@ -6,16 +6,17 @@ using System.Threading.Tasks;
 
 namespace Homework3
 {
-    internal class Poland: History, ICountry
+    internal class Poland: ICountry
     {
         public int Population { get; set; }
         public string Gymn { get; set; }
         public string Flag { get; set; }
+        public string History { get; set; }
         public string Shliahta { get; set; }
 
-        public Poland (string shliahta) : this(30000000, "sche Polska nie zginiela", "white and red", shliahta, "tez chce")
+        public Poland (string shliahta) : this(30_000_000, "sche Polska nie zginiela", "white and red", shliahta, "tez chce")
         {
-            Console.WriteLine("Cy est to czas uje sie vyjobuvate?");
+            Console.WriteLine("Cy est to czas uje sie vyjobuvaty?");
         }
 
         public Poland(int population, string gymn, string flag, string shliahta, string deadRussians) : base(deadRussians)
@@ -40,12 +41,12 @@ namespace Homework3
             Console.WriteLine("It's my empire.");
         }
 
-        public override void Symbols()
+        public override void GetSymbols()
         {
             Console.WriteLine($"*singing {Gymn} under the {Flag} flag*");
         }
 
-        public string PolskaKurwa(int money)
+        public string GetPolskaKurwa(int money)
         {
             int enoughMoney = 30;
 

@@ -8,16 +8,13 @@ namespace Homework3
 {
     internal class CaseTest: Test
     {
-        public CaseTest Type { get; set; }
         public string[] Options { get; set; }
 
         const int countOfTestOptions = 4;
 
-        public CaseTest(int identifier, string topic, string question, string correctAnswer, 
-            CaseTest type, string[] variants): 
+        public CaseTest(int identifier, string topic, string question, string correctAnswer, string[] variants): 
             base(identifier, topic, question, correctAnswer)
         {
-            this.Type = type;
             this.Options = variants;
 
             if (variants.Count() != countOfTestOptions)
@@ -28,7 +25,7 @@ namespace Homework3
 
         public override void PrintTest()
         {
-            Console.WriteLine(Topic);
+            Console.WriteLine(Topic); //useless
             Console.WriteLine();
             Console.WriteLine(Question);
             Console.WriteLine();
@@ -40,7 +37,7 @@ namespace Homework3
 
         public override bool CheckAnswer(string userAnswer)
         {
-            return userAnswer == CorrectAnswer? true : false;
+            return userAnswer == CorrectAnswer;
         }
     }
 }

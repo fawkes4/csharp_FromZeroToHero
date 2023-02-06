@@ -11,5 +11,6 @@ namespace Homework3
         public int Population { get; set; }
         public string Gymn { get; set; }
         public string Flag { get; set; }
+        public string History { get; set; }
     }
 }

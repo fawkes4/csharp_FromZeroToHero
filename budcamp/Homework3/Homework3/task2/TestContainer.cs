@@ -8,41 +8,32 @@ namespace Homework3
 {
     internal class TestContainer
     {
-        private Dictionary<string, List<Test>> dictOfTests;
+        private Dictionary<string, List<Test>> testContainer = new Dictionary<string, List<Test>>();
 
         public TestContainer()
         {
-            dictOfTests = new Dictionary<string, List<Test>>();
+            
         }
 
-        public IEnumerable<Test> AddTest(Test test)
+        public IEnumerable<Test> AddTest(Test test) //void
         {
-            if (!dictOfTests.ContainsKey(test.Topic))
+            if (!testContainer.ContainsKey(test.Topic))
             {
-                dictOfTests[test.Topic] = new List<Test>();
-                dictOfTests[test.Topic].Add(test);
+                testContainer[test.Topic] = new List<Test>();
             }
-            else
-            {
-                //dictOfTests[test.Topic].Add(test);
-                Console.WriteLine("this test is alredy exists or ID reserved");
-            }
+            testContainer[test.Topic].Add(test);
 
-            return //Enumerable.Empty<Test>();
+            return Enumerable.Empty<Test>();
         }
 
-        public List<Test> GetTestByTopic(string topic)
+        public IEnumerable<Test> GetTestByTopic(string topic)
         {
-            if (dictOfTests.ContainsKey(topic))
+            if (testContainer.ContainsKey(topic))
             {
-                return dictOfTests[topic];
-            }
-            else
-            {
-                Console.WriteLine("no test found with this TOPIC");
+                return testContainer[topic];
             }
 
-            return null;
+            return Enumerable.Empty<Test>();
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Homework3
 {
-    internal class Test
+    internal abstract class Test
     {
         public int ID { get; set; }
         public string Topic { get; set; }
@@ -20,7 +20,7 @@ namespace Homework3
             this.Question = question;
             this.CorrectAnswer = correctAnswer;
         }
-        public virtual void PrintTest() { }
+        public abstract void PrintTest();
 
         public virtual bool CheckAnswer(string userAnswer)
         {

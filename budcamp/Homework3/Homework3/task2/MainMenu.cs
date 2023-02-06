@@ -8,15 +8,15 @@ namespace Homework3
 {
     internal class MainMenu
     {
-        public MainMenu() { }
-
         public void PrintMenu()
         {
             Console.WriteLine("You are in main menu. To select test - enter '1'. " +
                 "To see results - enter '2'");
             string userInput = Console.ReadLine();
-            
-            if(userInput == "1")
+
+            TestResults testResults = new TestResults();
+
+            if (userInput == "1")
             {
                 Console.WriteLine("Pls enter the topic u want to choose");
                 string input = Console.ReadLine();
@@ -34,7 +34,6 @@ namespace Homework3
                 Console.WriteLine("Pls enter the topic u want to see your score");
                 string input = Console.ReadLine();
 
-                TestResults testResults = new TestResults();
                 testResults.GetResults(input);
             }
             else
