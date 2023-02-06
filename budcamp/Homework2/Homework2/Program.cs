@@ -12,11 +12,11 @@ namespace Homework2
 
             //Task3();
 
-            Task4();
+            //Task4();
 
             //Task5();
 
-            //Task6();
+            Task6();
         }
 
         private static void Task1()
@@ -128,7 +128,7 @@ namespace Homework2
             int duplicateMaxCount = 0;
 
             duplicateMaxCount = inputArr.GroupBy(s => s)
-                .Select(a => new { Value = a.Key, Count = a.Count() })
+                .Select(a => new { Count = a.Count() })
                 .Where(a => a.Count > 1)
                 .Sum(a => a.Count - 1);
 

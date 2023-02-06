@@ -27,32 +27,22 @@ namespace Homework2
         {
             point = default(Point);
 
-            try
+            string[] splitedString = input.Split(',', StringSplitOptions.TrimEntries);
+
+            if (int.TryParse(splitedString[0], out int num1)
+                && int.TryParse(splitedString[1], out int num2))
             {
-                string[] splitedString = input.Split(',');
-                splitedString[0].Trim();
-                splitedString[1].Trim();
-
-                if (int.TryParse(splitedString[0], out int num1)
-                    && int.TryParse(splitedString[1], out int num2))
-                {
-                    point.X = num1;
-                    point.Y = num2;
-                }
-                else
-                {
-                    Console.WriteLine($"Result of parsing: false, Point = undefined");
-                    return false;
-                }
-
-                Console.WriteLine($"Result of parsing: true, Point = ({point.X}, {point.Y})");
-                return true;
+                point.X = num1;
+                point.Y = num2;
             }
-            catch (Exception)
+            else
             {
-                Console.WriteLine("input was incorect");
+                Console.WriteLine($"Result of parsing: false, Point = undefined");
                 return false;
             }
+
+            Console.WriteLine($"Result of parsing: true, Point = ({point.X}, {point.Y})");
+            return true;
         }
     }
 }
