@@ -6,33 +6,36 @@ using System.Threading.Tasks;
 
 namespace Homework3
 {
+    /* клас, який зберігає результати тестів.*/
     internal class TestResults
     {
-        public List<Test> Tests { get; set; }
-        public string Topic { get; set; }
+        //public int ID { get; set; } - треба добавити можливість брати ІД тесту.
+        public List<Test>? Tests { get; set; }
+        public string? Topic { get; set; }
         public int CorrectAnswers { get; set; }
         public DateTime DateOfTest { get; set; }
 
+        Test? test;
+
+        //місце зберігання результатів
         private Dictionary<string, TestResults> testResults = new Dictionary<string, TestResults>();
 
-        public TestResults(Dictionary<string, TestResults> results)
+        public void PrintResult(string topic)
         {
-            this.testResults = results;
-        }
-
-        public void AddResults(string topic, TestResults mark)
-        {
-            testResults[topic] = mark;
-        }
-
-        public TestResults GetResults(string topic)
-        {
-            if (testResults.ContainsKey(topic))
+            try
             {
-                return testResults[topic];
+                var results = testResults[topic];
+
+                Console.WriteLine("Your passed tests:");
+                Console.WriteLine($"Id: {test.ID}");
+                Console.WriteLine($"Topic: {results.Topic}");
+                Console.WriteLine($"Date: {results.DateOfTest}");
+                Console.WriteLine($"Result: {results.CorrectAnswers}");
             }
-            
-            return null;
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
     }
 }

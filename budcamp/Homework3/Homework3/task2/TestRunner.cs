@@ -19,7 +19,7 @@ namespace Homework3
         {
             int correctAnswers = 0;
 
-            List<Test> chosenTopicTests = testContainer.GetTestByTopic(topic);
+            var chosenTopicTests = testContainer.GetTestByTopic(topic);
 
             foreach (Test test in chosenTopicTests)
             {
@@ -33,15 +33,21 @@ namespace Homework3
             }
 
             Console.Clear();
-            mainMenu.PrintMenu();
 
-            TestResults result = new TestResults()
+            TestResults result = new TestResults         // TestResult result = new TestResult();
             {
-                Topic = topic,
-                Tests = tests,
-                Date = DateTime.Now,
-                CorrectAnswers = correctAnswers
+                Tests = (List<Test>)chosenTopicTests,    // result.Tests = tests
+                Topic = topic,                           // result.Topic = topic
+                CorrectAnswers = correctAnswers,
+                DateOfTest = DateTime.Now
             };
+
+            Console.WriteLine("Press any button to go to the main menu");
+            Console.ReadKey();
+            Console.Clear();
+
+            MainMenu.PrintMenu();
+
             return result;
         }
     }

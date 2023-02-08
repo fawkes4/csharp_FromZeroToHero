@@ -8,22 +8,16 @@ namespace Homework3
 {
     internal class TestContainer
     {
-        private Dictionary<string, List<Test>> testContainer = new Dictionary<string, List<Test>>();
+        private static Dictionary<string, List<Test>> testContainer = new Dictionary<string, List<Test>>();
 
-        public TestContainer()
-        {
-            
-        }
-
-        public IEnumerable<Test> AddTest(Test test) //void
+        public static void AddTest(Test test)
         {
             if (!testContainer.ContainsKey(test.Topic))
             {
-                testContainer[test.Topic] = new List<Test>();
+                testContainer.Add(test.Topic, new List<Test>());
             }
-            testContainer[test.Topic].Add(test);
 
-            return Enumerable.Empty<Test>();
+            testContainer[test.Topic].Add(test);
         }
 
         public IEnumerable<Test> GetTestByTopic(string topic)

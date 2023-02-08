@@ -8,7 +8,7 @@ namespace Homework3
 {
     internal class MainMenu
     {
-        public void PrintMenu()
+        public static void PrintMenu() //логіку треба поміняти, бо не паше
         {
             Console.WriteLine("You are in main menu. To select test - enter '1'. " +
                 "To see results - enter '2'");
@@ -22,7 +22,6 @@ namespace Homework3
                 string input = Console.ReadLine();
 
                 TestContainer testContainer = new TestContainer();
-                testContainer.GetTestByTopic(input);
 
                 Console.WriteLine("Are you ready to begin? Enter a key!");
                 Console.ReadKey();
@@ -34,14 +33,13 @@ namespace Homework3
                 Console.WriteLine("Pls enter the topic u want to see your score");
                 string input = Console.ReadLine();
 
-                testResults.GetResults(input);
+                testResults.PrintResult(input);
             }
             else
             {
                 Console.WriteLine("not correct input");
             }
         }
-
     }
 }
 
