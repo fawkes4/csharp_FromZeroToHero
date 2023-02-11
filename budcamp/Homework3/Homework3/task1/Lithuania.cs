@@ -13,7 +13,7 @@ namespace Homework3
         public string Flag { get; set; }
         public string History { get; set; }
 
-        public Lithuania(int population, string gymn, string flag, string deadRussians) : base(deadRussians)
+        public Lithuania(int population, string gymn, string flag, string deadRussians)
         {
             this.Population = population;
             this.Gymn = gymn;
@@ -25,12 +25,12 @@ namespace Homework3
             return "we give you all u want to kill russians";
         }
 
-        public override void PolishLithuanianCommonwealth()
+        public void PolishLithuanianCommonwealth()
         {
             Console.WriteLine("It's a konfederation of two monarchies.");
         }
 
-        public override void Symbols()
+        public void Symbols()
         {
             Console.WriteLine($"*singing {Gymn} under the {Flag} flag*") ;
         }

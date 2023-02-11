@@ -15,7 +15,7 @@ namespace Homework3
             this.testContainer = testContainer;
         }
 
-        public TestResults RunTest(string topic)
+        public void RunTest(string topic)
         {
             int correctAnswers = 0;
 
@@ -30,25 +30,23 @@ namespace Homework3
                 {
                     correctAnswers++;
                 }
+
+                TestResults result = new TestResults         // TestResult result = new TestResult();
+                {
+                    Tests = (List<Test>)chosenTopicTests,    // result.Tests = tests
+                    Topic = topic,                           // result.Topic = topic
+                    CorrectAnswers = correctAnswers,
+                    DateOfTest = DateTime.Now
+                };
             }
 
             Console.Clear();
-
-            TestResults result = new TestResults         // TestResult result = new TestResult();
-            {
-                Tests = (List<Test>)chosenTopicTests,    // result.Tests = tests
-                Topic = topic,                           // result.Topic = topic
-                CorrectAnswers = correctAnswers,
-                DateOfTest = DateTime.Now
-            };
 
             Console.WriteLine("Press any button to go to the main menu");
             Console.ReadKey();
             Console.Clear();
 
             MainMenu.PrintMenu();
-
-            return result;
         }
     }
 }

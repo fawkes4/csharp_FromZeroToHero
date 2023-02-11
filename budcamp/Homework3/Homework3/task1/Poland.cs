@@ -19,7 +19,7 @@ namespace Homework3
             Console.WriteLine("Cy est to czas uje sie vyjobuvaty?");
         }
 
-        public Poland(int population, string gymn, string flag, string shliahta, string deadRussians) : base(deadRussians)
+        public Poland(int population, string gymn, string flag, string shliahta, string deadRussians)
         {
             if(population > 40000000)
             {
@@ -36,12 +36,12 @@ namespace Homework3
             this.Shliahta = shliahta;
         }
 
-        public override void PolishLithuanianCommonwealth()
+        public void PolishLithuanianCommonwealth()
         {
             Console.WriteLine("It's my empire.");
         }
 
-        public override void GetSymbols()
+        public void GetSymbols()
         {
             Console.WriteLine($"*singing {Gymn} under the {Flag} flag*");
         }

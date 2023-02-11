@@ -17,24 +17,19 @@ namespace Homework3
 
         public readonly string vlomytyPizdy;
 
-        public History History { get; set; }
-
-        History history = new History("not enouph");
-
-        public override void PolishLithuanianCommonwealth()
+        public void PolishLithuanianCommonwealth()
         {
-            base.PolishLithuanianCommonwealth();
             Console.WriteLine("Why am I here? Bohdan, plz tell me ASAP.");
         }
 
-        public Ukraine (int population, string gymn, string flag, string deadRussians) : base(deadRussians)
+        public Ukraine (int population, string gymn, string flag, string deadRussians)
         {
             Population = population;
             Flag = flag;
             Gymn = gymn;
         }
 
-        public override void GetSymbols()
+        public void GetSymbols()
         {
             Console.WriteLine($"*singing {Gymn} under the {Flag} flag*");
         }
